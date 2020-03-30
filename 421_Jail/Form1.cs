@@ -21,5 +21,11 @@ namespace _421_Jail
             Employee emp = new Employee();
             emp.Show();
         }
+
+        private void IButton_Click(object sender, EventArgs e)
+        {
+            Inmate inmate = new Inmate();
+            inmate.Show();
+        }
     }
 }

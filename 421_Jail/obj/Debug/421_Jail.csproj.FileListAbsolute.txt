@@ -8,3 +8,14 @@ C:\Users\Noel\source\repos\421_Jail\421_Jail\obj\Debug\421_Jail.csproj.CoreCompi
 C:\Users\Noel\source\repos\421_Jail\421_Jail\obj\Debug\421_Jail.exe
 C:\Users\Noel\source\repos\421_Jail\421_Jail\obj\Debug\421_Jail.pdb
 C:\Users\Noel\source\repos\421_Jail\421_Jail\obj\Debug\_421_Jail.MainMenu.resources
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\bin\Debug\421_Jail.exe
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\bin\Debug\421_Jail.pdb
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.csprojAssemblyReference.cache
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Employee.resources
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\_421_Jail.MainMenu.resources
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Properties.Resources.resources
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.csproj.GenerateResource.cache
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.csproj.CoreCompileInputs.cache
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.exe
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.pdb
+C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Inmate.resources

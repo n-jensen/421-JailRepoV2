@@ -65,6 +65,7 @@
             this.IButton.TabIndex = 2;
             this.IButton.Text = "Inmate Information";
             this.IButton.UseVisualStyleBackColor = false;
+            this.IButton.Click += new System.EventHandler(this.IButton_Click);
             // 
             // CButton
             // 
