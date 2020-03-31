@@ -48,7 +48,8 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open) //and others
                 {
-                    SqlCommand sqlCmd = new SqlCommand("SELECT * FROM EMPLOYEE WHERE ESSN = @ESSN ", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand("SELECT * FROM EMPLOYEE, GUARD, CARE, DESK WHERE ESSN = @ESSN " +
+                        "AND (EMPLOYEE.ESSN = GUARD.ESSN OR EMPLOYEE.ESSN = CARE.ESSN OR EMPLOYEE.ESSN = DESK.ESSN)", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
                     while (reader.Read())
@@ -64,7 +65,8 @@ namespace _421_Jail
                             StreetAddress = reader.GetString(reader.GetOrdinal("StrAddress")),
                             City = reader.GetString(reader.GetOrdinal("City")),
                             State = reader.GetString(reader.GetOrdinal("State")),
-                            Zip = reader.GetString(reader.GetOrdinal("Zip"))
+                            Zip = reader.GetString(reader.GetOrdinal("Zip")),
+                            EmpType = reader.GetString(reader.GetOrdinal("")),////////////////
                         };
                     }
                 }
@@ -86,7 +88,7 @@ namespace _421_Jail
             }
         }
 
-        public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, int JailID, string Street, string City, string State, string Zip)
+        public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, int JailID, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -105,6 +107,24 @@ namespace _421_Jail
                     sqlCmd.Parameters.AddWithValue("@State", State);
                     sqlCmd.Parameters.AddWithValue("@Zip", Zip);
                     sqlCmd.ExecuteNonQuery();
+                    if (empType == "GUARD")
+                    {
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO GUARD VALUES (@ESSN, @AssignedBlock)");
+                        addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addEmpType.Parameters.AddWithValue("@AssignedBlock", typeInfo);
+                    }
+                    else if (empType == "DESK")
+                    {
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO DESK VALUES (@ESSN, @DeskNumber)");
+                        addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addEmpType.Parameters.AddWithValue("@DeskNumber", typeInfo);
+                    }
+                    else if (empType == "CARE")
+                    {
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO CARE VALUES (@ESSN, @CareType)");
+                        addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addEmpType.Parameters.AddWithValue("@CareType", typeInfo);
+                    }
                 }
             }
         }
@@ -127,6 +147,8 @@ namespace _421_Jail
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+        public string EmpType { get; set; }
+        public string TypeInfo { get; set; }
     }
 
 
