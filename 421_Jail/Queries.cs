@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace _421_Jail
 {
@@ -18,21 +19,53 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open) //and others
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT ESSN, Fname, Lname, Birthday, Payroll, JailID FROM EMPLOYEE ", sqlCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT  EMPLOYEE.ESSN,
+                                                    EMPLOYEE.Fname,
+                                                    EMPLOYEE.Lname,
+                                                    EMPLOYEE.Birthday,
+                                                    EMPLOYEE.Payroll,
+                                                    EMPLOYEE.StrAddress,
+                                                    EMPLOYEE.City,
+                                                    EMPLOYEE.State,
+                                                    EMPLOYEE.Zip,
+                                                    GUARD.AssignedBlock,
+                                                    CARE.CareType,
+                                                    DESK.DeskNumber
+                                                    FROM EMPLOYEE
+                                                    LEFT JOIN GUARD
+                                                    ON EMPLOYEE.ESSN = GUARD.ESSN
+                                                    LEFT JOIN CARE
+                                                    ON EMPLOYEE.ESSN = CARE.ESSN
+                                                    LEFT JOIN DESK
+                                                    ON EMPLOYEE.ESSN = DESK.ESSN", sqlCon);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while(reader.Read()) //adds db info into an Employees-type variable
+                    while (reader.Read()) //adds db info into an Employees-type variable
                     {
-                        Employees.Add(new Employees{
-                            ESSN = reader.GetString(reader.GetOrdinal("ESSN")),
-                            Fname = reader.GetString(reader.GetOrdinal("Fname")),
-                            Lname = reader.GetString(reader.GetOrdinal("Lname")),
+                        var extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
+                        var empType = "GUARD";
+                        if (extraInfo == null || extraInfo == "")
+                        {
+                            extraInfo = reader.GetValue(reader.GetOrdinal("CareType")).ToString();
+                            empType = "CARE";
+                        }
+                        if (extraInfo == null || extraInfo == "")
+                        {
+                            extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
+                            empType = "DESK";
+                        }
+                        Employees.Add(new Employees
+                        {
+                            ESSN = reader.GetString(reader.GetOrdinal("ESSN")).Trim(),
+                            Fname = reader.GetString(reader.GetOrdinal("Fname")).Trim(),
+                            Lname = reader.GetString(reader.GetOrdinal("Lname")).Trim(),
                             Birthday = reader.GetDateTime(reader.GetOrdinal("Birthday")),
                             Payroll = reader.GetDecimal(reader.GetOrdinal("Payroll")),
-                            JailID = reader.GetInt32(reader.GetOrdinal("JailID")),
-                            StreetAddress = reader.GetString(reader.GetOrdinal("StrAddress")),
-                            City = reader.GetString(reader.GetOrdinal("City")),
-                            State = reader.GetString(reader.GetOrdinal("State")),
-                            Zip = reader.GetString(reader.GetOrdinal("Zip"))
+                            StreetAddress = reader.GetString(reader.GetOrdinal("StrAddress")).Trim(),
+                            City = reader.GetString(reader.GetOrdinal("City")).Trim(),
+                            State = reader.GetString(reader.GetOrdinal("State")).Trim(),
+                            Zip = reader.GetString(reader.GetOrdinal("Zip")).Trim(),
+                            EmpType = empType,
+                            TypeInfo = extraInfo
                         });
                     }
                 }
@@ -48,91 +81,212 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open) //and others
                 {
-                    SqlCommand sqlCmd = new SqlCommand("SELECT * FROM EMPLOYEE, GUARD, CARE, DESK WHERE ESSN = @ESSN " +
-                        "AND (EMPLOYEE.ESSN = GUARD.ESSN OR EMPLOYEE.ESSN = CARE.ESSN OR EMPLOYEE.ESSN = DESK.ESSN)", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand(@"SELECT EMPLOYEE.ESSN,
+                                                        EMPLOYEE.Fname,
+                                                        EMPLOYEE.Lname,
+                                                        EMPLOYEE.Birthday,
+                                                        EMPLOYEE.Payroll,
+                                                        EMPLOYEE.StrAddress,
+                                                        EMPLOYEE.State,
+                                                        EMPLOYEE.City,
+                                                        EMPLOYEE.Zip,
+                                                        GUARD.AssignedBlock,
+                                                        CARE.CareType,
+                                                        DESK.DeskNumber
+                                                        FROM EMPLOYEE
+                                                        LEFT JOIN GUARD
+                                                        ON EMPLOYEE.ESSN = GUARD.ESSN
+                                                        LEFT JOIN CARE
+                                                        ON EMPLOYEE.ESSN = CARE.ESSN
+                                                        LEFT JOIN DESK
+                                                        ON EMPLOYEE.ESSN = DESK.ESSN 
+                                                        WHERE EMPLOYEE.ESSN = @ESSN", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
                     while (reader.Read())
                     {
+                        var extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
+                        var empType = "GUARD";
+                        if (extraInfo == null || extraInfo == "")
+                        {
+                            extraInfo = reader.GetValue(reader.GetOrdinal("CareType")).ToString();
+                            empType = "CARE";
+                        }
+                        if (extraInfo == null || extraInfo == "")
+                        {
+                            extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
+                            empType = "DESK";
+                        }
                         employees = new Employees
                         {
-                            ESSN = reader.GetString(reader.GetOrdinal("ESSN")),
-                            Fname = reader.GetString(reader.GetOrdinal("Fname")),
-                            Lname = reader.GetString(reader.GetOrdinal("Lname")),
+                            ESSN = reader.GetString(reader.GetOrdinal("ESSN")).Trim(),
+                            Fname = reader.GetString(reader.GetOrdinal("Fname")).Trim(),
+                            Lname = reader.GetString(reader.GetOrdinal("Lname")).Trim(),
                             Birthday = reader.GetDateTime(reader.GetOrdinal("Birthday")),
                             Payroll = reader.GetDecimal(reader.GetOrdinal("Payroll")),
-                            JailID = reader.GetInt32(reader.GetOrdinal("JailID")),
-                            StreetAddress = reader.GetString(reader.GetOrdinal("StrAddress")),
-                            City = reader.GetString(reader.GetOrdinal("City")),
-                            State = reader.GetString(reader.GetOrdinal("State")),
-                            Zip = reader.GetString(reader.GetOrdinal("Zip")),
-                            EmpType = reader.GetString(reader.GetOrdinal("")),////////////////
+                            StreetAddress = reader.GetString(reader.GetOrdinal("StrAddress")).Trim(),
+                            City = reader.GetString(reader.GetOrdinal("City")).Trim(),
+                            State = reader.GetString(reader.GetOrdinal("State")).Trim(),
+                            Zip = reader.GetString(reader.GetOrdinal("Zip")).Trim(),
+                            EmpType = empType,
+                            TypeInfo = extraInfo
                         };
                     }
                 }
             }
             return employees;
-        }    
+        }
 
         public static void EmpDeletion(string ESSN)
         {
+            var employee = EmpDisplayOne(ESSN);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
-                if (sqlCon.State == System.Data.ConnectionState.Open) 
+                if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
                     SqlCommand sqlCmd = new SqlCommand("DELETE FROM EMPLOYEE WHERE ESSN = @ESSN", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
                     sqlCmd.ExecuteNonQuery();
+                    if (employee.EmpType == "GUARD")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM GUARD WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
+                    else if (employee.EmpType == "DESK")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM DESK WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
+                    else if (employee.EmpType == "CARE")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM CARE WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
                 }
             }
         }
 
-        public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, int JailID, string Street, string City, string State, string Zip, string empType, string typeInfo)
+        public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO EMPLOYEE VALUES(@ESSN, @Fname, @Lname, @Birthday, @Payroll, @JailID, @Street, @City, @State, @Zip)", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO EMPLOYEE VALUES(@ESSN, @Fname, @Lname, @Birthday, @Payroll, @Street, @City, @State, @Zip)", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
                     sqlCmd.Parameters.AddWithValue("@Fname", Fname);
                     sqlCmd.Parameters.AddWithValue("@Lname", Lname);
                     sqlCmd.Parameters.AddWithValue("@Birthday", Birthday);
                     sqlCmd.Parameters.AddWithValue("@Payroll", Payroll);
-                    sqlCmd.Parameters.AddWithValue("@JailID", JailID);
                     sqlCmd.Parameters.AddWithValue("@Street", Street);
                     sqlCmd.Parameters.AddWithValue("@City", City);
                     sqlCmd.Parameters.AddWithValue("@State", State);
                     sqlCmd.Parameters.AddWithValue("@Zip", Zip);
                     sqlCmd.ExecuteNonQuery();
+
                     if (empType == "GUARD")
                     {
-                        SqlCommand addEmpType = new SqlCommand("INSERT INTO GUARD VALUES (@ESSN, @AssignedBlock)");
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO GUARD VALUES (@ESSN, @AssignedBlock)", sqlCon);
                         addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
                         addEmpType.Parameters.AddWithValue("@AssignedBlock", typeInfo);
+                        addEmpType.ExecuteNonQuery();
                     }
                     else if (empType == "DESK")
                     {
-                        SqlCommand addEmpType = new SqlCommand("INSERT INTO DESK VALUES (@ESSN, @DeskNumber)");
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO DESK VALUES (@ESSN, @DeskNum)", sqlCon);
                         addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
-                        addEmpType.Parameters.AddWithValue("@DeskNumber", typeInfo);
+                        addEmpType.Parameters.AddWithValue("@DeskNum", typeInfo);
+                        addEmpType.ExecuteNonQuery();
                     }
                     else if (empType == "CARE")
                     {
-                        SqlCommand addEmpType = new SqlCommand("INSERT INTO CARE VALUES (@ESSN, @CareType)");
+                        SqlCommand addEmpType = new SqlCommand("INSERT INTO CARE VALUES (@ESSN, @CareType)", sqlCon);
                         addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
                         addEmpType.Parameters.AddWithValue("@CareType", typeInfo);
+                        addEmpType.ExecuteNonQuery();
                     }
                 }
             }
         }
 
-        public static void EmpEdit()
+
+        public static void EmpEdit(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
-           
-        }   
+            var employee = EmpDisplayOne(ESSN);
+
+            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            {
+                sqlCon.Open();
+                if (sqlCon.State == System.Data.ConnectionState.Open)
+                {
+                    if (employee.EmpType == "GUARD")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM GUARD WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
+                    else if (employee.EmpType == "CARE")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM CARE WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
+                    else if (employee.EmpType == "DESK")
+                    {
+                        SqlCommand delEmpType = new SqlCommand("DELETE FROM DESK WHERE ESSN = @ESSN", sqlCon);
+                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                        delEmpType.ExecuteNonQuery();
+                    }
+
+                    if(empType == "GUARD")
+                    {
+                        SqlCommand addNewType = new SqlCommand("INSERT INTO GUARD VALUES(@ESSN, @AssignedBlock)", sqlCon);
+                        addNewType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addNewType.Parameters.AddWithValue("@AssignedBlock", typeInfo);
+                        addNewType.ExecuteNonQuery();
+                    }
+                    else if (empType == "CARE")
+                    {
+                        SqlCommand addNewType = new SqlCommand("INSERT INTO CARE VALUES(@ESSN, @CareType)", sqlCon);
+                        addNewType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addNewType.Parameters.AddWithValue("@CareType", typeInfo);
+                        addNewType.ExecuteNonQuery();
+                    }
+                    else if (empType == "DESK")
+                    {
+                        SqlCommand addNewType = new SqlCommand("INSERT INTO DESK VALUES(@ESSN, @DeskNumber)", sqlCon);
+                        addNewType.Parameters.AddWithValue("@ESSN", ESSN);
+                        addNewType.Parameters.AddWithValue("@DeskNumber", typeInfo);
+                        addNewType.ExecuteNonQuery();
+                    }
+
+                    SqlCommand sqlCmd = new SqlCommand(@"UPDATE EMPLOYEE 
+                                                        SET Fname = @Fname,
+                                                        Lname = @Lname,
+                                                        Birthday = @Birthday,
+                                                        Payroll = @Payroll, 
+                                                        StrAddress = @Address,
+                                                        City = @City,
+                                                        Zip = @Zip
+                                                        WHERE ESSN = @ESSN", sqlCon);
+                    sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
+                    sqlCmd.Parameters.AddWithValue("@Fname", Fname);
+                    sqlCmd.Parameters.AddWithValue("@Lname", Lname);
+                    sqlCmd.Parameters.AddWithValue("@Birthday", Birthday);
+                    sqlCmd.Parameters.AddWithValue("@Payroll", Payroll);
+                    sqlCmd.Parameters.AddWithValue("@Address", Street);
+                    sqlCmd.Parameters.AddWithValue("@City", City);
+                    sqlCmd.Parameters.AddWithValue("@Zip", Zip);
+                    sqlCmd.ExecuteNonQuery();
+                    
+                }
+            }
+        }
     }
 
     public class Employees
@@ -142,7 +296,6 @@ namespace _421_Jail
         public string Lname { get; set; }
         public DateTime Birthday { get; set; }
         public decimal Payroll { get; set; }
-        public int JailID { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }

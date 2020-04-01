@@ -37,12 +37,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.editButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -59,9 +57,7 @@
             this.findButton = new System.Windows.Forms.Button();
             this.birthdayCal = new System.Windows.Forms.MonthCalendar();
             this.payrollTxt = new System.Windows.Forms.NumericUpDown();
-            this.jailIDTxt = new System.Windows.Forms.NumericUpDown();
             this.payrollEditTxt = new System.Windows.Forms.NumericUpDown();
-            this.jailIDEditTxt = new System.Windows.Forms.NumericUpDown();
             this.birthdayEditTxt = new System.Windows.Forms.MonthCalendar();
             this.streetTxt = new System.Windows.Forms.TextBox();
             this.cityTxt = new System.Windows.Forms.TextBox();
@@ -82,12 +78,15 @@
             this.empTypeComboBox = new System.Windows.Forms.ComboBox();
             this.empTypeInfoLbl = new System.Windows.Forms.Label();
             this.empTypeInfoTxt = new System.Windows.Forms.TextBox();
-            this.empTypeTxt = new System.Windows.Forms.Label();
+            this.empTypeLbl = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.empInfoEditTxt = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.empTypeEditComboBox = new System.Windows.Forms.ComboBox();
+            this.tryAgainLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollTxt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jailIDTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollEditTxt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jailIDEditTxt)).BeginInit();
             this.SuspendLayout();
             // 
             // essnTxt
@@ -108,7 +107,7 @@
             // 
             // addEButton
             // 
-            this.addEButton.Location = new System.Drawing.Point(31, 536);
+            this.addEButton.Location = new System.Drawing.Point(31, 514);
             this.addEButton.Name = "addEButton";
             this.addEButton.Size = new System.Drawing.Size(100, 23);
             this.addEButton.TabIndex = 12;
@@ -170,28 +169,20 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Payroll";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(158, 337);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Jail ID";
-            // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(348, 536);
+            this.editButton.Location = new System.Drawing.Point(321, 560);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(100, 23);
             this.editButton.TabIndex = 30;
             this.editButton.Text = "Edit Employee";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(345, 22);
+            this.label10.Location = new System.Drawing.Point(318, 22);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(240, 13);
             this.label10.TabIndex = 29;
@@ -209,25 +200,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(454, 55);
+            this.label12.Location = new System.Drawing.Point(427, 55);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(36, 13);
             this.label12.TabIndex = 32;
             this.label12.Text = "ESSN";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(474, 395);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 13);
-            this.label13.TabIndex = 38;
-            this.label13.Text = "Jail ID";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(471, 369);
+            this.label15.Location = new System.Drawing.Point(444, 366);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 13);
             this.label15.TabIndex = 36;
@@ -236,7 +218,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(576, 193);
+            this.label16.Location = new System.Drawing.Point(548, 190);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 13);
             this.label16.TabIndex = 35;
@@ -245,7 +227,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(454, 164);
+            this.label17.Location = new System.Drawing.Point(427, 161);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 13);
             this.label17.TabIndex = 34;
@@ -254,7 +236,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(454, 135);
+            this.label18.Location = new System.Drawing.Point(427, 135);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(55, 13);
             this.label18.TabIndex = 33;
@@ -263,7 +245,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(345, 113);
+            this.label19.Location = new System.Drawing.Point(318, 113);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(158, 13);
             this.label19.TabIndex = 39;
@@ -292,21 +274,21 @@
             // 
             // searchESSNTxt
             // 
-            this.searchESSNTxt.Location = new System.Drawing.Point(348, 52);
+            this.searchESSNTxt.Location = new System.Drawing.Point(321, 52);
             this.searchESSNTxt.Name = "searchESSNTxt";
             this.searchESSNTxt.Size = new System.Drawing.Size(100, 20);
             this.searchESSNTxt.TabIndex = 51;
             // 
             // fnameEditTxt
             // 
-            this.fnameEditTxt.Location = new System.Drawing.Point(348, 132);
+            this.fnameEditTxt.Location = new System.Drawing.Point(321, 132);
             this.fnameEditTxt.Name = "fnameEditTxt";
             this.fnameEditTxt.Size = new System.Drawing.Size(100, 20);
             this.fnameEditTxt.TabIndex = 52;
             // 
             // lnameEditTxt
             // 
-            this.lnameEditTxt.Location = new System.Drawing.Point(348, 161);
+            this.lnameEditTxt.Location = new System.Drawing.Point(321, 158);
             this.lnameEditTxt.Name = "lnameEditTxt";
             this.lnameEditTxt.Size = new System.Drawing.Size(100, 20);
             this.lnameEditTxt.TabIndex = 53;
@@ -331,7 +313,7 @@
             // 
             // findButton
             // 
-            this.findButton.Location = new System.Drawing.Point(348, 77);
+            this.findButton.Location = new System.Drawing.Point(321, 77);
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(100, 23);
             this.findButton.TabIndex = 61;
@@ -362,17 +344,10 @@
             this.payrollTxt.Size = new System.Drawing.Size(120, 20);
             this.payrollTxt.TabIndex = 64;
             // 
-            // jailIDTxt
-            // 
-            this.jailIDTxt.Location = new System.Drawing.Point(32, 335);
-            this.jailIDTxt.Name = "jailIDTxt";
-            this.jailIDTxt.Size = new System.Drawing.Size(120, 20);
-            this.jailIDTxt.TabIndex = 65;
-            // 
             // payrollEditTxt
             // 
             this.payrollEditTxt.DecimalPlaces = 2;
-            this.payrollEditTxt.Location = new System.Drawing.Point(348, 367);
+            this.payrollEditTxt.Location = new System.Drawing.Point(321, 364);
             this.payrollEditTxt.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -382,16 +357,9 @@
             this.payrollEditTxt.Size = new System.Drawing.Size(120, 20);
             this.payrollEditTxt.TabIndex = 66;
             // 
-            // jailIDEditTxt
-            // 
-            this.jailIDEditTxt.Location = new System.Drawing.Point(348, 393);
-            this.jailIDEditTxt.Name = "jailIDEditTxt";
-            this.jailIDEditTxt.Size = new System.Drawing.Size(120, 20);
-            this.jailIDEditTxt.TabIndex = 67;
-            // 
             // birthdayEditTxt
             // 
-            this.birthdayEditTxt.Location = new System.Drawing.Point(348, 193);
+            this.birthdayEditTxt.Location = new System.Drawing.Point(321, 190);
             this.birthdayEditTxt.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
             this.birthdayEditTxt.MaxSelectionCount = 1;
             this.birthdayEditTxt.Name = "birthdayEditTxt";
@@ -401,21 +369,21 @@
             // 
             // streetTxt
             // 
-            this.streetTxt.Location = new System.Drawing.Point(32, 361);
+            this.streetTxt.Location = new System.Drawing.Point(32, 339);
             this.streetTxt.Name = "streetTxt";
             this.streetTxt.Size = new System.Drawing.Size(100, 20);
             this.streetTxt.TabIndex = 69;
             // 
             // cityTxt
             // 
-            this.cityTxt.Location = new System.Drawing.Point(32, 389);
+            this.cityTxt.Location = new System.Drawing.Point(32, 367);
             this.cityTxt.Name = "cityTxt";
             this.cityTxt.Size = new System.Drawing.Size(100, 20);
             this.cityTxt.TabIndex = 70;
             // 
             // stateTxt
             // 
-            this.stateTxt.Location = new System.Drawing.Point(32, 418);
+            this.stateTxt.Location = new System.Drawing.Point(32, 396);
             this.stateTxt.Name = "stateTxt";
             this.stateTxt.Size = new System.Drawing.Size(100, 20);
             this.stateTxt.TabIndex = 71;
@@ -423,7 +391,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(135, 364);
+            this.label8.Location = new System.Drawing.Point(135, 342);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 72;
@@ -432,7 +400,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(138, 421);
+            this.label20.Location = new System.Drawing.Point(138, 399);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(32, 13);
             this.label20.TabIndex = 73;
@@ -441,7 +409,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(138, 392);
+            this.label21.Location = new System.Drawing.Point(138, 370);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(24, 13);
             this.label21.TabIndex = 74;
@@ -450,7 +418,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(138, 450);
+            this.label22.Location = new System.Drawing.Point(138, 428);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(22, 13);
             this.label22.TabIndex = 76;
@@ -458,7 +426,7 @@
             // 
             // zipTxt
             // 
-            this.zipTxt.Location = new System.Drawing.Point(32, 447);
+            this.zipTxt.Location = new System.Drawing.Point(32, 425);
             this.zipTxt.Name = "zipTxt";
             this.zipTxt.Size = new System.Drawing.Size(100, 20);
             this.zipTxt.TabIndex = 75;
@@ -466,7 +434,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(454, 508);
+            this.label14.Location = new System.Drawing.Point(427, 482);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(22, 13);
             this.label14.TabIndex = 84;
@@ -474,7 +442,7 @@
             // 
             // zipEditTxt
             // 
-            this.zipEditTxt.Location = new System.Drawing.Point(348, 505);
+            this.zipEditTxt.Location = new System.Drawing.Point(321, 479);
             this.zipEditTxt.Name = "zipEditTxt";
             this.zipEditTxt.Size = new System.Drawing.Size(100, 20);
             this.zipEditTxt.TabIndex = 83;
@@ -482,7 +450,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(454, 450);
+            this.label23.Location = new System.Drawing.Point(427, 424);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(24, 13);
             this.label23.TabIndex = 82;
@@ -491,7 +459,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(454, 479);
+            this.label24.Location = new System.Drawing.Point(427, 453);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(32, 13);
             this.label24.TabIndex = 81;
@@ -500,7 +468,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(451, 422);
+            this.label25.Location = new System.Drawing.Point(424, 396);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 80;
@@ -508,21 +476,21 @@
             // 
             // stateEditTxt
             // 
-            this.stateEditTxt.Location = new System.Drawing.Point(348, 476);
+            this.stateEditTxt.Location = new System.Drawing.Point(321, 450);
             this.stateEditTxt.Name = "stateEditTxt";
             this.stateEditTxt.Size = new System.Drawing.Size(100, 20);
             this.stateEditTxt.TabIndex = 79;
             // 
             // cityEditTxt
             // 
-            this.cityEditTxt.Location = new System.Drawing.Point(348, 447);
+            this.cityEditTxt.Location = new System.Drawing.Point(321, 421);
             this.cityEditTxt.Name = "cityEditTxt";
             this.cityEditTxt.Size = new System.Drawing.Size(100, 20);
             this.cityEditTxt.TabIndex = 78;
             // 
             // streetEditTxt
             // 
-            this.streetEditTxt.Location = new System.Drawing.Point(348, 419);
+            this.streetEditTxt.Location = new System.Drawing.Point(321, 393);
             this.streetEditTxt.Name = "streetEditTxt";
             this.streetEditTxt.Size = new System.Drawing.Size(100, 20);
             this.streetEditTxt.TabIndex = 77;
@@ -530,7 +498,11 @@
             // empTypeComboBox
             // 
             this.empTypeComboBox.FormattingEnabled = true;
-            this.empTypeComboBox.Location = new System.Drawing.Point(31, 479);
+            this.empTypeComboBox.Items.AddRange(new object[] {
+            "GUARD",
+            "DESK",
+            "CARE"});
+            this.empTypeComboBox.Location = new System.Drawing.Point(31, 457);
             this.empTypeComboBox.Name = "empTypeComboBox";
             this.empTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.empTypeComboBox.TabIndex = 85;
@@ -538,27 +510,73 @@
             // empTypeInfoLbl
             // 
             this.empTypeInfoLbl.AutoSize = true;
-            this.empTypeInfoLbl.Location = new System.Drawing.Point(137, 513);
+            this.empTypeInfoLbl.Location = new System.Drawing.Point(137, 491);
             this.empTypeInfoLbl.Name = "empTypeInfoLbl";
-            this.empTypeInfoLbl.Size = new System.Drawing.Size(16, 13);
+            this.empTypeInfoLbl.Size = new System.Drawing.Size(74, 13);
             this.empTypeInfoLbl.TabIndex = 87;
-            this.empTypeInfoLbl.Text = "...";
+            this.empTypeInfoLbl.Text = "Employee Info";
             // 
             // empTypeInfoTxt
             // 
-            this.empTypeInfoTxt.Location = new System.Drawing.Point(31, 510);
+            this.empTypeInfoTxt.Location = new System.Drawing.Point(31, 488);
             this.empTypeInfoTxt.Name = "empTypeInfoTxt";
             this.empTypeInfoTxt.Size = new System.Drawing.Size(100, 20);
             this.empTypeInfoTxt.TabIndex = 86;
             // 
-            // empTypeTxt
+            // empTypeLbl
             // 
-            this.empTypeTxt.AutoSize = true;
-            this.empTypeTxt.Location = new System.Drawing.Point(158, 487);
-            this.empTypeTxt.Name = "empTypeTxt";
-            this.empTypeTxt.Size = new System.Drawing.Size(80, 13);
-            this.empTypeTxt.TabIndex = 88;
-            this.empTypeTxt.Text = "Employee Type";
+            this.empTypeLbl.AutoSize = true;
+            this.empTypeLbl.Location = new System.Drawing.Point(158, 465);
+            this.empTypeLbl.Name = "empTypeLbl";
+            this.empTypeLbl.Size = new System.Drawing.Size(80, 13);
+            this.empTypeLbl.TabIndex = 88;
+            this.empTypeLbl.Text = "Employee Type";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(427, 537);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(74, 13);
+            this.label26.TabIndex = 92;
+            this.label26.Text = "Employee Info";
+            // 
+            // empInfoEditTxt
+            // 
+            this.empInfoEditTxt.Location = new System.Drawing.Point(321, 534);
+            this.empInfoEditTxt.Name = "empInfoEditTxt";
+            this.empInfoEditTxt.Size = new System.Drawing.Size(100, 20);
+            this.empInfoEditTxt.TabIndex = 91;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(444, 510);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(80, 13);
+            this.label27.TabIndex = 90;
+            this.label27.Text = "Employee Type";
+            // 
+            // empTypeEditComboBox
+            // 
+            this.empTypeEditComboBox.FormattingEnabled = true;
+            this.empTypeEditComboBox.Items.AddRange(new object[] {
+            "GUARD",
+            "DESK",
+            "CARE"});
+            this.empTypeEditComboBox.Location = new System.Drawing.Point(321, 507);
+            this.empTypeEditComboBox.Name = "empTypeEditComboBox";
+            this.empTypeEditComboBox.Size = new System.Drawing.Size(121, 21);
+            this.empTypeEditComboBox.TabIndex = 93;
+            // 
+            // tryAgainLbl
+            // 
+            this.tryAgainLbl.AutoSize = true;
+            this.tryAgainLbl.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tryAgainLbl.Location = new System.Drawing.Point(770, 342);
+            this.tryAgainLbl.Name = "tryAgainLbl";
+            this.tryAgainLbl.Size = new System.Drawing.Size(0, 24);
+            this.tryAgainLbl.TabIndex = 94;
             // 
             // Employee
             // 
@@ -566,7 +584,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1204, 631);
-            this.Controls.Add(this.empTypeTxt);
+            this.Controls.Add(this.tryAgainLbl);
+            this.Controls.Add(this.empTypeEditComboBox);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.empInfoEditTxt);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.empTypeLbl);
             this.Controls.Add(this.empTypeInfoLbl);
             this.Controls.Add(this.empTypeInfoTxt);
             this.Controls.Add(this.empTypeComboBox);
@@ -587,9 +610,7 @@
             this.Controls.Add(this.cityTxt);
             this.Controls.Add(this.streetTxt);
             this.Controls.Add(this.birthdayEditTxt);
-            this.Controls.Add(this.jailIDEditTxt);
             this.Controls.Add(this.payrollEditTxt);
-            this.Controls.Add(this.jailIDTxt);
             this.Controls.Add(this.payrollTxt);
             this.Controls.Add(this.birthdayCal);
             this.Controls.Add(this.findButton);
@@ -602,7 +623,6 @@
             this.Controls.Add(this.lnameTxt);
             this.Controls.Add(this.fnameTxt);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
@@ -611,7 +631,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -625,9 +644,7 @@
             this.Text = "Employee";
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollTxt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jailIDTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollEditTxt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jailIDEditTxt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -644,12 +661,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -666,9 +681,7 @@
         private System.Windows.Forms.Button findButton;
         private System.Windows.Forms.MonthCalendar birthdayCal;
         private System.Windows.Forms.NumericUpDown payrollTxt;
-        private System.Windows.Forms.NumericUpDown jailIDTxt;
         private System.Windows.Forms.NumericUpDown payrollEditTxt;
-        private System.Windows.Forms.NumericUpDown jailIDEditTxt;
         private System.Windows.Forms.MonthCalendar birthdayEditTxt;
         private System.Windows.Forms.TextBox streetTxt;
         private System.Windows.Forms.TextBox cityTxt;
@@ -689,6 +702,11 @@
         private System.Windows.Forms.ComboBox empTypeComboBox;
         private System.Windows.Forms.Label empTypeInfoLbl;
         private System.Windows.Forms.TextBox empTypeInfoTxt;
-        private System.Windows.Forms.Label empTypeTxt;
+        private System.Windows.Forms.Label empTypeLbl;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox empInfoEditTxt;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox empTypeEditComboBox;
+        private System.Windows.Forms.Label tryAgainLbl;
     }
 }
