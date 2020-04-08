@@ -287,7 +287,7 @@ namespace _421_Jail
                 }
             }
         }
-<<<<<<< HEAD
+
      //Block query
      public static List<Block> GetBlockInfo()
           {
@@ -402,9 +402,9 @@ namespace _421_Jail
                }
           }
     } // end of BLOCK Query
-=======
+
     }
->>>>>>> be7c2e9c12f998197df94185d2c1fe517e99d25b
+
 
     public class Employees
     {
