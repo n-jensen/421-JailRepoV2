@@ -19,3 +19,13 @@ C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.cspro
 C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.exe
 C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\421_Jail.pdb
 C:\Users\Noel\source\repos\421_Jail\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Inmate.resources
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\bin\Debug\421_Jail.exe
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\bin\Debug\421_Jail.pdb
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\421_Jail.csprojAssemblyReference.cache
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Employee.resources
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\_421_Jail.MainMenu.resources
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Inmate.resources
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\_421_Jail.Properties.Resources.resources
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\421_Jail.csproj.GenerateResource.cache
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\421_Jail.exe
+C:\Users\Rhagavi Thiagarajah\Documents\CIS 421\JailRepoV2\421_Jail\obj\Debug\421_Jail.pdb
