@@ -108,14 +108,5 @@ namespace _421_Jail
             else
                 tryAgainLbl.Text = "Try Again :(";
         }
-<<<<<<< HEAD
-
-          private void EmployeeGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-          {
-
-          }
-     }
-=======
     }
->>>>>>> be7c2e9c12f998197df94185d2c1fe517e99d25b
 }
