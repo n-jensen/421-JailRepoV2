@@ -27,5 +27,11 @@ namespace _421_Jail
             Inmate inmate = new Inmate();
             inmate.Show();
         }
-    }
+
+          private void BButton_Click_1(object sender, EventArgs e)
+          {
+               Block block = new Block();
+               block.Show();
+          }
+     }
 }

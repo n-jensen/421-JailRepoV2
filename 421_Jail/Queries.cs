@@ -297,28 +297,27 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand cmd = new SqlCommand(@"SELECT BLOCK.BlockID, 
-                                                                  BLOCK.BName, 
-                                                                  BLOCK.Location, 
-                                                                  BLOCK.NumOfInmates", sqlCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location, BLOCK.NumOfInmates FROM BLOCK", sqlCon);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         Block.Add(new BlockModel
                         {
-                            BlockID = reader.GetString(reader.GetOrdinal("BlockID")).Trim(),
+                            BlockID = reader.GetInt32(reader.GetOrdinal("BlockID")),
                             BName = reader.GetString(reader.GetOrdinal("BName")).Trim(),
                             Location = reader.GetString(reader.GetOrdinal("Location")).Trim(),
                             NumOfInmates = reader.GetInt32(reader.GetOrdinal("NumOfInmates"))
                         });
+                              
                     }
                 }
             }
+                 
             return Block;
         }
 
         //Display Block info
-        public static BlockModel DisplayBlockInfo(string BlockID)
+        public static BlockModel DisplayBlockInfo(int BlockID)
         {
             BlockModel block = null;
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
@@ -326,17 +325,15 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand(@"SELECT BLOCK.BlockID, 
-                                                                     BLOCK.Bname, 
-                                                                     BLOCK.Location, 
-                                                                     BLOCK.NumOfInmates", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location,BLOCK.NumOfInmates FROM BLOCK WHERE BLOCK.BlockID = @BlockID", sqlCon);
+                        // string blockID = BlockID.ToString();
                     sqlCmd.Parameters.AddWithValue("@BlockID", BlockID);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
                     while (reader.Read())
                     {
                         block = new BlockModel
                         {
-                            BlockID = reader.GetString(reader.GetOrdinal("BlockID")).Trim(),
+                            BlockID = reader.GetInt32(reader.GetOrdinal("BlockID")),
                             BName = reader.GetString(reader.GetOrdinal("BName")).Trim(),
                             Location = reader.GetString(reader.GetOrdinal("Location")).Trim(),
                             NumOfInmates = reader.GetInt32(reader.GetOrdinal("NumOfInmates"))
@@ -347,7 +344,7 @@ namespace _421_Jail
             return block;
         }
         //Delete Block info
-        public static void BlockDeletion(string BlockID)
+        public static void BlockDeletion(int BlockID)
         {
             var block = DisplayBlockInfo(BlockID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
@@ -362,7 +359,7 @@ namespace _421_Jail
             }
         }
         //Add Block info
-        public static void BlockAddition(string BlockID, string BName, string Location, int NumOfInmates)
+        public static void BlockAddition(int BlockID, string BName, string Location, int NumOfInmates)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -379,7 +376,7 @@ namespace _421_Jail
             }
         }
         //Edit Block info
-        public static void BlockEdit(string BlockID, string BName, string Location, int NumOfInmates)
+        public static void BlockEdit(int BlockID, string BName, string Location, int NumOfInmates)
         {
             var block = DisplayBlockInfo(BlockID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
@@ -388,10 +385,10 @@ namespace _421_Jail
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
                     SqlCommand sqlCmd = new SqlCommand(@"UPDATE BLOCK 
-                                                              SET Bname = @Bname, 
-                                                              Location = @Location, 
-                                                              NumOfInmates = @NumOfInmates 
-                                                              WHERE BlockID = @BlockID", sqlCon);
+                                                         SET Bname = @Bname, 
+                                                         Location = @Location, 
+                                                         NumOfInmates = @NumOfInmates 
+                                                         WHERE BlockID = @BlockID", sqlCon);
 
                     sqlCmd.Parameters.AddWithValue("@BlockID", BlockID);
                     sqlCmd.Parameters.AddWithValue("@Bname", BName);
@@ -421,7 +418,7 @@ namespace _421_Jail
     }
 
      public class BlockModel {
-          public string BlockID { get; set; }
+          public int BlockID { get; set; }
           public string BName { get; set; }
           public string Location { get; set; }
           public int NumOfInmates { get; set; }
