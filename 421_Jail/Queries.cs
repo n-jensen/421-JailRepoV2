@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace _421_Jail
 {
@@ -140,31 +137,34 @@ namespace _421_Jail
         public static void EmpDeletion(string ESSN)
         {
             var employee = EmpDisplayOne(ESSN);
-            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            if (employee != null)
             {
-                sqlCon.Open();
-                if (sqlCon.State == System.Data.ConnectionState.Open)
+                using (SqlConnection sqlCon = new SqlConnection(connectionStr))
                 {
-                    SqlCommand sqlCmd = new SqlCommand("DELETE FROM EMPLOYEE WHERE ESSN = @ESSN", sqlCon);
-                    sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
-                    sqlCmd.ExecuteNonQuery();
-                    if (employee.EmpType == "GUARD")
+                    sqlCon.Open();
+                    if (sqlCon.State == System.Data.ConnectionState.Open)
                     {
-                        SqlCommand delEmpType = new SqlCommand("DELETE FROM GUARD WHERE ESSN = @ESSN", sqlCon);
-                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
-                        delEmpType.ExecuteNonQuery();
-                    }
-                    else if (employee.EmpType == "DESK")
-                    {
-                        SqlCommand delEmpType = new SqlCommand("DELETE FROM DESK WHERE ESSN = @ESSN", sqlCon);
-                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
-                        delEmpType.ExecuteNonQuery();
-                    }
-                    else if (employee.EmpType == "CARE")
-                    {
-                        SqlCommand delEmpType = new SqlCommand("DELETE FROM CARE WHERE ESSN = @ESSN", sqlCon);
-                        delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
-                        delEmpType.ExecuteNonQuery();
+                        SqlCommand sqlCmd = new SqlCommand("DELETE FROM EMPLOYEE WHERE ESSN = @ESSN", sqlCon);
+                        sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
+                        sqlCmd.ExecuteNonQuery();
+                        if (employee?.EmpType == "GUARD")
+                        {
+                            SqlCommand delEmpType = new SqlCommand("DELETE FROM GUARD WHERE ESSN = @ESSN", sqlCon);
+                            delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                            delEmpType.ExecuteNonQuery();
+                        }
+                        else if (employee?.EmpType == "DESK")
+                        {
+                            SqlCommand delEmpType = new SqlCommand("DELETE FROM DESK WHERE ESSN = @ESSN", sqlCon);
+                            delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                            delEmpType.ExecuteNonQuery();
+                        }
+                        else if (employee?.EmpType == "CARE")
+                        {
+                            SqlCommand delEmpType = new SqlCommand("DELETE FROM CARE WHERE ESSN = @ESSN", sqlCon);
+                            delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
+                            delEmpType.ExecuteNonQuery();
+                        }
                     }
                 }
             }

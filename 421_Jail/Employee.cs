@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace _421_Jail
@@ -53,8 +48,22 @@ namespace _421_Jail
 
         private bool CheckEntries(string essn, string fname, string lname, decimal payroll, string street, string city, string state, string zip, string type, string info)
         {
-            return essn != "" && fname != "" && lname != "" && payroll > Decimal.Parse(0.0.ToString()) && street != "" && city != "" && state != "" && zip != "" && type != "" && info != ""
-                && essn.Length == 9 && fname.Length <= 20 && lname.Length <= 20 && street.Length < 50 && city.Length < 20 && state.Length == 2 && zip.Length == 5;
+            var basicCheck = Regex.IsMatch(essn, @"^[0-9]{9}$") && Regex.IsMatch(fname, @"^[a-zA-Z]{1,20}$") && Regex.IsMatch(lname, @"^[a-zA-Z]{1,20}$")
+                && Regex.IsMatch(street, @"^[a-zA-Z0-9\s]{1,50}$") && Regex.IsMatch(state, @"^[A-Z]{2}$") && Regex.IsMatch(zip, @"^[0-9]{5}$")
+                && Regex.IsMatch(city, @"^[a-zA-Z]{1,20}$") && payroll > Decimal.Parse(0.0.ToString()) && type != "" && info != "";
+
+            bool typeCheck = false;
+            if ((type == "GUARD" || type == "DESK") && Regex.IsMatch(info, @"^[0-9]+$"))
+            {
+                typeCheck = true;
+            }
+            if(type == "CARE" && Regex.IsMatch(info, @"^[a-zA-Z]{1,20}$"))
+            {
+                typeCheck = true;
+            }
+
+            return basicCheck && typeCheck;
+
         }
 
         private void AddEButton_Click(object sender, EventArgs e)
@@ -69,22 +78,38 @@ namespace _421_Jail
                 this.ResetGrid();
             }
             else
-                tryAgainLbl.Text = "Try Again :((";
+                tryAgainLbl.Text = "Please make sure all feilds are valid";
         }
 
         private void findButton_Click(object sender, EventArgs e)
         {
             Employees emp = Queries.EmpDisplayOne(searchESSNTxt.Text);
-            fnameEditTxt.Text = emp.Fname;
-            lnameEditTxt.Text = emp.Lname;
-            birthdayEditTxt.SetDate(emp.Birthday);
-            payrollEditTxt.Value = emp.Payroll;
-            streetEditTxt.Text = emp.StreetAddress;
-            cityEditTxt.Text = emp.City;
-            stateEditTxt.Text = emp.State;
-            zipEditTxt.Text = emp.Zip;
-            empTypeEditComboBox.SelectedItem = emp.EmpType;
-            empInfoEditTxt.Text = emp.TypeInfo.ToString();
+            if (emp != null)
+            {
+                fnameEditTxt.Text = emp.Fname;
+                lnameEditTxt.Text = emp.Lname;
+                birthdayEditTxt.SetDate(emp.Birthday);
+                payrollEditTxt.Value = emp.Payroll;
+                streetEditTxt.Text = emp.StreetAddress;
+                cityEditTxt.Text = emp.City;
+                stateEditTxt.Text = emp.State;
+                zipEditTxt.Text = emp.Zip;
+                empTypeEditComboBox.SelectedItem = emp.EmpType;
+                empInfoEditTxt.Text = emp.TypeInfo.ToString();
+            }
+            else
+            {
+                fnameEditTxt.Text = "";
+                lnameEditTxt.Text = "";
+                birthdayEditTxt.SetDate(DateTime.Now);
+                payrollEditTxt.Value = 0;
+                streetEditTxt.Text = "";
+                cityEditTxt.Text = "";
+                stateEditTxt.Text = "";
+                zipEditTxt.Text = "";
+                empTypeEditComboBox.SelectedItem = null;
+                empInfoEditTxt.Text = "";
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -106,7 +131,7 @@ namespace _421_Jail
                 this.ResetGrid();
             }
             else
-                tryAgainLbl.Text = "Try Again :(";
+                tryAgainLbl.Text = "Please make sure all feilds are valid";
         }
     }
 }
