@@ -124,7 +124,8 @@ namespace _421_Jail
         {
             bool check = CheckEntries(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text, payrollEditTxt.Value, streetEditTxt.Text,
                 cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditTxt.Text);
-            if (check == true)
+            bool checkGuard = Queries.CheckGuardsBlock(Convert.ToInt32(empInfoEditTxt.Text));
+            if (check == true && checkGuard == true)
             {
                 tryAgainLbl.Text = "";
                 Queries.EmpEdit(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text,
