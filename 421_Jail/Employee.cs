@@ -22,6 +22,7 @@ namespace _421_Jail
             this.EmployeeGrid.Columns.Add("Employee Type Info", "Employee Type Info");
             this.birthdayCal.MaxSelectionCount = 1;
             this.ResetGrid();
+            typeTimer.Start();
         }
 
         private void ResetGrid()
@@ -70,6 +71,7 @@ namespace _421_Jail
         {
             bool check = CheckEntries(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, payrollTxt.Value, streetTxt.Text,
                 cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoTxt.Text);
+            
             if (check == true)
             {
                 tryAgainLbl.Text = "";
@@ -78,7 +80,7 @@ namespace _421_Jail
                 this.ResetGrid();
             }
             else
-                tryAgainLbl.Text = "Please make sure all feilds are valid";
+                tryAgainLbl.Text = "Please make sure all fields are valid";
         }
 
         private void findButton_Click(object sender, EventArgs e)
@@ -131,7 +133,29 @@ namespace _421_Jail
                 this.ResetGrid();
             }
             else
-                tryAgainLbl.Text = "Please make sure all feilds are valid";
+                tryAgainLbl.Text = "Please make sure all fields are valid";
+        }
+
+        private void typeTimer_Tick(object sender, EventArgs e)
+        {
+            string type = empTypeComboBox.SelectedItem?.ToString();
+            string editType = empTypeEditComboBox.SelectedItem?.ToString();
+
+            //checks first column
+            if (type == "GUARD")
+                empTypeInfoLbl.Text = "Block ID";
+            else if (type == "DESK")
+                empTypeInfoLbl.Text = "Desk #";
+            else if (type == "CARE")
+                empTypeInfoLbl.Text = "Care Type";
+
+            //checks 2nd column
+            if (editType == "GUARD")
+                editEmpTypeInfoLbl.Text = "Block ID";
+            else if (editType == "DESK")
+                editEmpTypeInfoLbl.Text = "Desk #";
+            else if (editType == "CARE")
+                editEmpTypeInfoLbl.Text = "Care Type";
         }
     }
 }

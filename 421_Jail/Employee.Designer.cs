@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.essnTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.addEButton = new System.Windows.Forms.Button();
@@ -79,11 +80,12 @@
             this.empTypeInfoLbl = new System.Windows.Forms.Label();
             this.empTypeInfoTxt = new System.Windows.Forms.TextBox();
             this.empTypeLbl = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.editEmpTypeInfoLbl = new System.Windows.Forms.Label();
             this.empInfoEditTxt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.empTypeEditComboBox = new System.Windows.Forms.ComboBox();
             this.tryAgainLbl = new System.Windows.Forms.Label();
+            this.typeTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollEditTxt)).BeginInit();
@@ -532,14 +534,14 @@
             this.empTypeLbl.TabIndex = 88;
             this.empTypeLbl.Text = "Employee Type";
             // 
-            // label26
+            // editEmpTypeInfoLbl
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(427, 537);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(74, 13);
-            this.label26.TabIndex = 92;
-            this.label26.Text = "Employee Info";
+            this.editEmpTypeInfoLbl.AutoSize = true;
+            this.editEmpTypeInfoLbl.Location = new System.Drawing.Point(427, 537);
+            this.editEmpTypeInfoLbl.Name = "editEmpTypeInfoLbl";
+            this.editEmpTypeInfoLbl.Size = new System.Drawing.Size(74, 13);
+            this.editEmpTypeInfoLbl.TabIndex = 92;
+            this.editEmpTypeInfoLbl.Text = "Employee Info";
             // 
             // empInfoEditTxt
             // 
@@ -578,6 +580,11 @@
             this.tryAgainLbl.Size = new System.Drawing.Size(0, 24);
             this.tryAgainLbl.TabIndex = 94;
             // 
+            // typeTimer
+            // 
+            this.typeTimer.Interval = 10;
+            this.typeTimer.Tick += new System.EventHandler(this.typeTimer_Tick);
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,7 +593,7 @@
             this.ClientSize = new System.Drawing.Size(1204, 631);
             this.Controls.Add(this.tryAgainLbl);
             this.Controls.Add(this.empTypeEditComboBox);
-            this.Controls.Add(this.label26);
+            this.Controls.Add(this.editEmpTypeInfoLbl);
             this.Controls.Add(this.empInfoEditTxt);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.empTypeLbl);
@@ -703,10 +710,11 @@
         private System.Windows.Forms.Label empTypeInfoLbl;
         private System.Windows.Forms.TextBox empTypeInfoTxt;
         private System.Windows.Forms.Label empTypeLbl;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label editEmpTypeInfoLbl;
         private System.Windows.Forms.TextBox empInfoEditTxt;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox empTypeEditComboBox;
         private System.Windows.Forms.Label tryAgainLbl;
+        private System.Windows.Forms.Timer typeTimer;
     }
 }
