@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.addIDTxt = new System.Windows.Forms.TextBox();
+            this.addSSNTxt = new System.Windows.Forms.TextBox();
+            this.addFnameTxt = new System.Windows.Forms.TextBox();
+            this.addLnameTxt = new System.Windows.Forms.TextBox();
+            this.addHealthTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,8 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -54,79 +52,72 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.editHealthTxt = new System.Windows.Forms.TextBox();
+            this.editLnameTxt = new System.Windows.Forms.TextBox();
+            this.editFnameTxt = new System.Windows.Forms.TextBox();
+            this.editSSNTxt = new System.Windows.Forms.TextBox();
+            this.editIDTxt = new System.Windows.Forms.TextBox();
+            this.findInmateBtn = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.editInmateBtn = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
-            this.monthCalendar3 = new System.Windows.Forms.MonthCalendar();
-            this.monthCalendar4 = new System.Windows.Forms.MonthCalendar();
+            this.inmateGrid = new System.Windows.Forms.DataGridView();
+            this.editBirthdayCalendar = new System.Windows.Forms.MonthCalendar();
+            this.birthdayCalendar = new System.Windows.Forms.MonthCalendar();
+            this.editArrivalCalendar = new System.Windows.Forms.MonthCalendar();
+            this.arrivalCalendar = new System.Windows.Forms.MonthCalendar();
             this.label8 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.deleteInmateBtn = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            this.deleteIDTxt = new System.Windows.Forms.TextBox();
+            this.yrsLeftDropDwn = new System.Windows.Forms.NumericUpDown();
+            this.editYrsLeftDropDwn = new System.Windows.Forms.NumericUpDown();
+            this.addInmateBtn = new System.Windows.Forms.Button();
+            this.tryAgainLbl = new System.Windows.Forms.Label();
+            this.crimeIDDropDwn = new System.Windows.Forms.ComboBox();
+            this.editCrimeIDDropDwn = new System.Windows.Forms.ComboBox();
+            this.blockIDDropDown = new System.Windows.Forms.ComboBox();
+            this.editBlockIDDropDwn = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.inmateGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yrsLeftDropDwn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftDropDwn)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // addIDTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.addIDTxt.Location = new System.Drawing.Point(20, 27);
+            this.addIDTxt.Name = "addIDTxt";
+            this.addIDTxt.Size = new System.Drawing.Size(100, 20);
+            this.addIDTxt.TabIndex = 0;
             // 
-            // textBox2
+            // addSSNTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(20, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.addSSNTxt.Location = new System.Drawing.Point(20, 53);
+            this.addSSNTxt.Name = "addSSNTxt";
+            this.addSSNTxt.Size = new System.Drawing.Size(100, 20);
+            this.addSSNTxt.TabIndex = 1;
             // 
-            // textBox3
+            // addFnameTxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(20, 79);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.addFnameTxt.Location = new System.Drawing.Point(20, 79);
+            this.addFnameTxt.Name = "addFnameTxt";
+            this.addFnameTxt.Size = new System.Drawing.Size(100, 20);
+            this.addFnameTxt.TabIndex = 2;
             // 
-            // textBox4
+            // addLnameTxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(20, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.addLnameTxt.Location = new System.Drawing.Point(20, 105);
+            this.addLnameTxt.Name = "addLnameTxt";
+            this.addLnameTxt.Size = new System.Drawing.Size(100, 20);
+            this.addLnameTxt.TabIndex = 3;
             // 
-            // textBox6
+            // addHealthTxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(20, 308);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 5;
+            this.addHealthTxt.Location = new System.Drawing.Point(20, 308);
+            this.addHealthTxt.Name = "addHealthTxt";
+            this.addHealthTxt.Size = new System.Drawing.Size(100, 20);
+            this.addHealthTxt.TabIndex = 5;
             // 
             // label1
             // 
@@ -185,7 +176,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(143, 337);
+            this.label7.Location = new System.Drawing.Point(146, 537);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 17;
@@ -194,7 +185,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(146, 542);
+            this.label9.Location = new System.Drawing.Point(144, 510);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 19;
@@ -203,34 +194,16 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(149, 568);
+            this.label10.Location = new System.Drawing.Point(145, 564);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "Block ID";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(149, 592);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Jail ID";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(487, 614);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(36, 13);
-            this.label12.TabIndex = 43;
-            this.label12.Text = "Jail ID";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(486, 588);
+            this.label13.Location = new System.Drawing.Point(492, 597);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 42;
@@ -239,7 +212,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(487, 562);
+            this.label14.Location = new System.Drawing.Point(493, 542);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
             this.label14.TabIndex = 41;
@@ -248,7 +221,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(592, 388);
+            this.label15.Location = new System.Drawing.Point(589, 366);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 40;
@@ -257,7 +230,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(489, 366);
+            this.label16.Location = new System.Drawing.Point(493, 569);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 13);
             this.label16.TabIndex = 39;
@@ -304,9 +277,9 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(472, 87);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(64, 13);
+            this.label21.Size = new System.Drawing.Size(117, 13);
             this.label21.TabIndex = 34;
-            this.label21.Text = "Inmate SSN";
+            this.label21.Text = "Inmate SSN (view only)";
             // 
             // label22
             // 
@@ -317,49 +290,50 @@
             this.label22.TabIndex = 33;
             this.label22.Text = "Inmate ID";
             // 
-            // textBox17
+            // editHealthTxt
             // 
-            this.textBox17.Location = new System.Drawing.Point(365, 334);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 20);
-            this.textBox17.TabIndex = 27;
+            this.editHealthTxt.Location = new System.Drawing.Point(365, 334);
+            this.editHealthTxt.Name = "editHealthTxt";
+            this.editHealthTxt.Size = new System.Drawing.Size(100, 20);
+            this.editHealthTxt.TabIndex = 27;
             // 
-            // textBox19
+            // editLnameTxt
             // 
-            this.textBox19.Location = new System.Drawing.Point(365, 136);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(100, 20);
-            this.textBox19.TabIndex = 25;
+            this.editLnameTxt.Location = new System.Drawing.Point(365, 136);
+            this.editLnameTxt.Name = "editLnameTxt";
+            this.editLnameTxt.Size = new System.Drawing.Size(100, 20);
+            this.editLnameTxt.TabIndex = 25;
             // 
-            // textBox20
+            // editFnameTxt
             // 
-            this.textBox20.Location = new System.Drawing.Point(365, 110);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(100, 20);
-            this.textBox20.TabIndex = 24;
+            this.editFnameTxt.Location = new System.Drawing.Point(365, 110);
+            this.editFnameTxt.Name = "editFnameTxt";
+            this.editFnameTxt.Size = new System.Drawing.Size(100, 20);
+            this.editFnameTxt.TabIndex = 24;
             // 
-            // textBox21
+            // editSSNTxt
             // 
-            this.textBox21.Location = new System.Drawing.Point(366, 84);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(100, 20);
-            this.textBox21.TabIndex = 23;
+            this.editSSNTxt.Location = new System.Drawing.Point(366, 84);
+            this.editSSNTxt.Name = "editSSNTxt";
+            this.editSSNTxt.Size = new System.Drawing.Size(100, 20);
+            this.editSSNTxt.TabIndex = 23;
             // 
-            // textBox22
+            // editIDTxt
             // 
-            this.textBox22.Location = new System.Drawing.Point(365, 24);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(100, 20);
-            this.textBox22.TabIndex = 22;
+            this.editIDTxt.Location = new System.Drawing.Point(365, 24);
+            this.editIDTxt.Name = "editIDTxt";
+            this.editIDTxt.Size = new System.Drawing.Size(100, 20);
+            this.editIDTxt.TabIndex = 22;
             // 
-            // button1
+            // findInmateBtn
             // 
-            this.button1.Location = new System.Drawing.Point(365, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Find Inmate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.findInmateBtn.Location = new System.Drawing.Point(365, 47);
+            this.findInmateBtn.Name = "findInmateBtn";
+            this.findInmateBtn.Size = new System.Drawing.Size(100, 23);
+            this.findInmateBtn.TabIndex = 44;
+            this.findInmateBtn.Text = "Find Inmate";
+            this.findInmateBtn.UseVisualStyleBackColor = true;
+            this.findInmateBtn.Click += new System.EventHandler(this.findInmateBtn_Click);
             // 
             // label23
             // 
@@ -370,24 +344,15 @@
             this.label23.TabIndex = 45;
             this.label23.Text = "Enter an inmate\'s information to add them:";
             // 
-            // button2
+            // editInmateBtn
             // 
-            this.button2.Location = new System.Drawing.Point(20, 619);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 46;
-            this.button2.Text = "Add Inmate";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(365, 637);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 47;
-            this.button3.Text = "Edit Inmate";
-            this.button3.UseVisualStyleBackColor = true;
+            this.editInmateBtn.Location = new System.Drawing.Point(366, 619);
+            this.editInmateBtn.Name = "editInmateBtn";
+            this.editInmateBtn.Size = new System.Drawing.Size(120, 23);
+            this.editInmateBtn.TabIndex = 47;
+            this.editInmateBtn.Text = "Edit Inmate";
+            this.editInmateBtn.UseVisualStyleBackColor = true;
+            this.editInmateBtn.Click += new System.EventHandler(this.editInmateBtn_Click);
             // 
             // label24
             // 
@@ -398,54 +363,54 @@
             this.label24.TabIndex = 48;
             this.label24.Text = "Enter an inmate\'s ID# to find them:";
             // 
-            // dataGridView1
+            // inmateGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(691, 417);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(355, 193);
-            this.dataGridView1.TabIndex = 49;
+            this.inmateGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.inmateGrid.Location = new System.Drawing.Point(632, 434);
+            this.inmateGrid.Name = "inmateGrid";
+            this.inmateGrid.Size = new System.Drawing.Size(407, 193);
+            this.inmateGrid.TabIndex = 49;
             // 
-            // monthCalendar1
+            // editBirthdayCalendar
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(365, 162);
-            this.monthCalendar1.MaxSelectionCount = 1;
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.ShowToday = false;
-            this.monthCalendar1.ShowTodayCircle = false;
-            this.monthCalendar1.TabIndex = 50;
+            this.editBirthdayCalendar.Location = new System.Drawing.Point(365, 162);
+            this.editBirthdayCalendar.MaxSelectionCount = 1;
+            this.editBirthdayCalendar.Name = "editBirthdayCalendar";
+            this.editBirthdayCalendar.ShowToday = false;
+            this.editBirthdayCalendar.ShowTodayCircle = false;
+            this.editBirthdayCalendar.TabIndex = 50;
             // 
-            // monthCalendar2
+            // birthdayCalendar
             // 
-            this.monthCalendar2.Location = new System.Drawing.Point(20, 137);
-            this.monthCalendar2.MaxSelectionCount = 1;
-            this.monthCalendar2.Name = "monthCalendar2";
-            this.monthCalendar2.ShowToday = false;
-            this.monthCalendar2.ShowTodayCircle = false;
-            this.monthCalendar2.TabIndex = 51;
+            this.birthdayCalendar.Location = new System.Drawing.Point(20, 137);
+            this.birthdayCalendar.MaxSelectionCount = 1;
+            this.birthdayCalendar.Name = "birthdayCalendar";
+            this.birthdayCalendar.ShowToday = false;
+            this.birthdayCalendar.ShowTodayCircle = false;
+            this.birthdayCalendar.TabIndex = 51;
             // 
-            // monthCalendar3
+            // editArrivalCalendar
             // 
-            this.monthCalendar3.Location = new System.Drawing.Point(365, 388);
-            this.monthCalendar3.MaxSelectionCount = 1;
-            this.monthCalendar3.Name = "monthCalendar3";
-            this.monthCalendar3.ShowToday = false;
-            this.monthCalendar3.ShowTodayCircle = false;
-            this.monthCalendar3.TabIndex = 52;
+            this.editArrivalCalendar.Location = new System.Drawing.Point(362, 366);
+            this.editArrivalCalendar.MaxSelectionCount = 1;
+            this.editArrivalCalendar.Name = "editArrivalCalendar";
+            this.editArrivalCalendar.ShowToday = false;
+            this.editArrivalCalendar.ShowTodayCircle = false;
+            this.editArrivalCalendar.TabIndex = 52;
             // 
-            // monthCalendar4
+            // arrivalCalendar
             // 
-            this.monthCalendar4.Location = new System.Drawing.Point(20, 366);
-            this.monthCalendar4.MaxSelectionCount = 1;
-            this.monthCalendar4.Name = "monthCalendar4";
-            this.monthCalendar4.ShowToday = false;
-            this.monthCalendar4.ShowTodayCircle = false;
-            this.monthCalendar4.TabIndex = 54;
+            this.arrivalCalendar.Location = new System.Drawing.Point(18, 337);
+            this.arrivalCalendar.MaxSelectionCount = 1;
+            this.arrivalCalendar.Name = "arrivalCalendar";
+            this.arrivalCalendar.ShowToday = false;
+            this.arrivalCalendar.ShowTodayCircle = false;
+            this.arrivalCalendar.TabIndex = 54;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 366);
+            this.label8.Location = new System.Drawing.Point(244, 337);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 53;
@@ -460,14 +425,15 @@
             this.label25.TabIndex = 58;
             this.label25.Text = "Enter an inmate\'s ID# to delete them:";
             // 
-            // button4
+            // deleteInmateBtn
             // 
-            this.button4.Location = new System.Drawing.Point(632, 46);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 57;
-            this.button4.Text = "Delete Inmate";
-            this.button4.UseVisualStyleBackColor = true;
+            this.deleteInmateBtn.Location = new System.Drawing.Point(632, 46);
+            this.deleteInmateBtn.Name = "deleteInmateBtn";
+            this.deleteInmateBtn.Size = new System.Drawing.Size(100, 23);
+            this.deleteInmateBtn.TabIndex = 57;
+            this.deleteInmateBtn.Text = "Delete Inmate";
+            this.deleteInmateBtn.UseVisualStyleBackColor = true;
+            this.deleteInmateBtn.Click += new System.EventHandler(this.deleteInmateBtn_Click);
             // 
             // label26
             // 
@@ -478,68 +444,80 @@
             this.label26.TabIndex = 56;
             this.label26.Text = "Inmate ID";
             // 
-            // textBox5
+            // deleteIDTxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(632, 23);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 55;
+            this.deleteIDTxt.Location = new System.Drawing.Point(632, 23);
+            this.deleteIDTxt.Name = "deleteIDTxt";
+            this.deleteIDTxt.Size = new System.Drawing.Size(100, 20);
+            this.deleteIDTxt.TabIndex = 55;
             // 
-            // numericUpDown2
+            // yrsLeftDropDwn
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(20, 540);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 60;
+            this.yrsLeftDropDwn.Location = new System.Drawing.Point(18, 508);
+            this.yrsLeftDropDwn.Name = "yrsLeftDropDwn";
+            this.yrsLeftDropDwn.Size = new System.Drawing.Size(120, 20);
+            this.yrsLeftDropDwn.TabIndex = 60;
             // 
-            // numericUpDown3
+            // editYrsLeftDropDwn
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(20, 566);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 61;
+            this.editYrsLeftDropDwn.Location = new System.Drawing.Point(367, 540);
+            this.editYrsLeftDropDwn.Name = "editYrsLeftDropDwn";
+            this.editYrsLeftDropDwn.Size = new System.Drawing.Size(120, 20);
+            this.editYrsLeftDropDwn.TabIndex = 63;
             // 
-            // numericUpDown4
+            // addInmateBtn
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(20, 590);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 62;
+            this.addInmateBtn.Location = new System.Drawing.Point(18, 587);
+            this.addInmateBtn.Name = "addInmateBtn";
+            this.addInmateBtn.Size = new System.Drawing.Size(120, 23);
+            this.addInmateBtn.TabIndex = 68;
+            this.addInmateBtn.Text = "Add Inmate";
+            this.addInmateBtn.UseVisualStyleBackColor = true;
+            this.addInmateBtn.Click += new System.EventHandler(this.addInmateBtn_Click);
             // 
-            // numericUpDown5
+            // tryAgainLbl
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(365, 610);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown5.TabIndex = 65;
+            this.tryAgainLbl.AutoSize = true;
+            this.tryAgainLbl.Location = new System.Drawing.Point(831, 378);
+            this.tryAgainLbl.Name = "tryAgainLbl";
+            this.tryAgainLbl.Size = new System.Drawing.Size(0, 13);
+            this.tryAgainLbl.TabIndex = 69;
             // 
-            // numericUpDown6
+            // crimeIDDropDwn
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(365, 586);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown6.TabIndex = 64;
+            this.crimeIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.crimeIDDropDwn.FormattingEnabled = true;
+            this.crimeIDDropDwn.Location = new System.Drawing.Point(19, 534);
+            this.crimeIDDropDwn.Name = "crimeIDDropDwn";
+            this.crimeIDDropDwn.Size = new System.Drawing.Size(121, 21);
+            this.crimeIDDropDwn.TabIndex = 70;
             // 
-            // numericUpDown7
+            // editCrimeIDDropDwn
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(365, 560);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown7.TabIndex = 63;
+            this.editCrimeIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editCrimeIDDropDwn.FormattingEnabled = true;
+            this.editCrimeIDDropDwn.Location = new System.Drawing.Point(366, 566);
+            this.editCrimeIDDropDwn.Name = "editCrimeIDDropDwn";
+            this.editCrimeIDDropDwn.Size = new System.Drawing.Size(121, 21);
+            this.editCrimeIDDropDwn.TabIndex = 71;
             // 
-            // numericUpDown1
+            // blockIDDropDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(366, 361);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 66;
+            this.blockIDDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blockIDDropDown.FormattingEnabled = true;
+            this.blockIDDropDown.Location = new System.Drawing.Point(19, 561);
+            this.blockIDDropDown.Name = "blockIDDropDown";
+            this.blockIDDropDown.Size = new System.Drawing.Size(121, 21);
+            this.blockIDDropDown.TabIndex = 72;
             // 
-            // numericUpDown8
+            // editBlockIDDropDwn
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(20, 334);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown8.TabIndex = 67;
+            this.editBlockIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editBlockIDDropDwn.FormattingEnabled = true;
+            this.editBlockIDDropDwn.Location = new System.Drawing.Point(367, 592);
+            this.editBlockIDDropDwn.Name = "editBlockIDDropDwn";
+            this.editBlockIDDropDwn.Size = new System.Drawing.Size(121, 21);
+            this.editBlockIDDropDwn.TabIndex = 73;
             // 
             // Inmate
             // 
@@ -547,30 +525,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1051, 749);
-            this.Controls.Add(this.numericUpDown8);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.numericUpDown7);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.editBlockIDDropDwn);
+            this.Controls.Add(this.blockIDDropDown);
+            this.Controls.Add(this.editCrimeIDDropDwn);
+            this.Controls.Add(this.crimeIDDropDwn);
+            this.Controls.Add(this.tryAgainLbl);
+            this.Controls.Add(this.addInmateBtn);
+            this.Controls.Add(this.editYrsLeftDropDwn);
+            this.Controls.Add(this.yrsLeftDropDwn);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.deleteInmateBtn);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.monthCalendar4);
+            this.Controls.Add(this.deleteIDTxt);
+            this.Controls.Add(this.arrivalCalendar);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.monthCalendar3);
-            this.Controls.Add(this.monthCalendar2);
-            this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.editArrivalCalendar);
+            this.Controls.Add(this.birthdayCalendar);
+            this.Controls.Add(this.editBirthdayCalendar);
+            this.Controls.Add(this.inmateGrid);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.editInmateBtn);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.findInmateBtn);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -581,12 +557,11 @@
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.textBox17);
-            this.Controls.Add(this.textBox19);
-            this.Controls.Add(this.textBox20);
-            this.Controls.Add(this.textBox21);
-            this.Controls.Add(this.textBox22);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.editHealthTxt);
+            this.Controls.Add(this.editLnameTxt);
+            this.Controls.Add(this.editFnameTxt);
+            this.Controls.Add(this.editSSNTxt);
+            this.Controls.Add(this.editIDTxt);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -596,22 +571,16 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.addHealthTxt);
+            this.Controls.Add(this.addLnameTxt);
+            this.Controls.Add(this.addFnameTxt);
+            this.Controls.Add(this.addSSNTxt);
+            this.Controls.Add(this.addIDTxt);
             this.Name = "Inmate";
             this.Text = "Inmate";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inmateGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yrsLeftDropDwn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftDropDwn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,11 +588,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox addIDTxt;
+        private System.Windows.Forms.TextBox addSSNTxt;
+        private System.Windows.Forms.TextBox addFnameTxt;
+        private System.Windows.Forms.TextBox addLnameTxt;
+        private System.Windows.Forms.TextBox addHealthTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -633,8 +602,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -645,33 +612,32 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox editHealthTxt;
+        private System.Windows.Forms.TextBox editLnameTxt;
+        private System.Windows.Forms.TextBox editFnameTxt;
+        private System.Windows.Forms.TextBox editSSNTxt;
+        private System.Windows.Forms.TextBox editIDTxt;
+        private System.Windows.Forms.Button findInmateBtn;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button editInmateBtn;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.MonthCalendar monthCalendar2;
-        private System.Windows.Forms.MonthCalendar monthCalendar3;
-        private System.Windows.Forms.MonthCalendar monthCalendar4;
+        private System.Windows.Forms.DataGridView inmateGrid;
+        private System.Windows.Forms.MonthCalendar editBirthdayCalendar;
+        private System.Windows.Forms.MonthCalendar birthdayCalendar;
+        private System.Windows.Forms.MonthCalendar editArrivalCalendar;
+        private System.Windows.Forms.MonthCalendar arrivalCalendar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button deleteInmateBtn;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.TextBox deleteIDTxt;
+        private System.Windows.Forms.NumericUpDown yrsLeftDropDwn;
+        private System.Windows.Forms.NumericUpDown editYrsLeftDropDwn;
+        private System.Windows.Forms.Button addInmateBtn;
+        private System.Windows.Forms.Label tryAgainLbl;
+        private System.Windows.Forms.ComboBox crimeIDDropDwn;
+        private System.Windows.Forms.ComboBox editCrimeIDDropDwn;
+        private System.Windows.Forms.ComboBox blockIDDropDown;
+        private System.Windows.Forms.ComboBox editBlockIDDropDwn;
     }
 }

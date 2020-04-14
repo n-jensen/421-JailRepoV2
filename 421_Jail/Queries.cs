@@ -69,7 +69,6 @@ namespace _421_Jail
             }
             return Employees;
         }
-
         public static Employees EmpDisplayOne(string ESSN)
         {
             Employees employees = null;
@@ -133,7 +132,6 @@ namespace _421_Jail
             }
             return employees;
         }
-
         public static void EmpDeletion(string ESSN)
         {
             var employee = EmpDisplayOne(ESSN);
@@ -169,7 +167,6 @@ namespace _421_Jail
                 }
             }
         }
-
         public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
@@ -213,7 +210,6 @@ namespace _421_Jail
                 }
             }
         }
-
         public static void EmpEdit(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
             var employee = EmpDisplayOne(ESSN);
@@ -282,7 +278,6 @@ namespace _421_Jail
                     sqlCmd.Parameters.AddWithValue("@City", City);
                     sqlCmd.Parameters.AddWithValue("@Zip", Zip);
                     sqlCmd.ExecuteNonQuery();
-
                 }
             }
         }
@@ -306,7 +301,6 @@ namespace _421_Jail
                 return retType;
             }
         }
-
         //Block query
         public static List<BlockModel> GetBlockInfo()
         {
@@ -334,7 +328,6 @@ namespace _421_Jail
                  
             return Block;
         }
-
         //Display Block info
         public static BlockModel DisplayBlockInfo(int BlockID)
         {
@@ -417,9 +410,10 @@ namespace _421_Jail
                 }
             }
         }
-    } // end of BLOCK Query
-}
+        // end of BLOCK Query
 
+    }
+}
 
     public class Employees
     {
@@ -442,5 +436,7 @@ namespace _421_Jail
           public string Location { get; set; }
           public int NumOfInmates { get; set; }
      }
+
+
 
 

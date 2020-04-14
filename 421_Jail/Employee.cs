@@ -64,7 +64,6 @@ namespace _421_Jail
             }
 
             return basicCheck && typeCheck;
-
         }
 
         private void AddEButton_Click(object sender, EventArgs e)

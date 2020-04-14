@@ -33,5 +33,11 @@ namespace _421_Jail
                Block block = new Block();
                block.Show();
           }
-     }
+
+        private void crimeIdBtn_Click(object sender, EventArgs e)
+        {
+            CrimeIDForm cid = new CrimeIDForm();
+            cid.Show();
+        }
+    }
 }
