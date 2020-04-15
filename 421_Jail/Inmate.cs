@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-
 
 namespace _421_Jail
 {
@@ -25,15 +19,8 @@ namespace _421_Jail
             this.inmateGrid.Columns.Add("Arrival Date", "Arrival Date");
             this.inmateGrid.Columns.Add("Years Left", "Years Left");
             this.inmateGrid.Columns.Add("Block ID", "Block ID");
-            this.inmateGrid.Columns.Add("Crime ID", "Crime ID");
             this.ResetGrid();
-            List<int> fillingC = InmateQueries.FillCrimeIDDropDown();
             List<int> fillingB = InmateQueries.FillBlockIDDropDown();
-            foreach (var x in fillingC)
-            {
-                crimeIDDropDwn.Items.Add(x);
-                editCrimeIDDropDwn.Items.Add(x);
-            }
             foreach (var x in fillingB)
             {
                 blockIDDropDown.Items.Add(x);
@@ -56,8 +43,7 @@ namespace _421_Jail
                     x.HealthStatus,
                     x.ArrivalDate,
                     x.YearsLeft,
-                    x.BlockID,
-                    x.Crime_ID
+                    x.BlockID
                     );
             }
         }
@@ -78,7 +64,7 @@ namespace _421_Jail
             {
                 InmateQueries.InmateAddition(Convert.ToInt32(addIDTxt.Text), addSSNTxt.Text, addFnameTxt.Text, addLnameTxt.Text, 
                     birthdayCalendar.SelectionRange.Start, addHealthTxt.Text, arrivalCalendar.SelectionRange.Start, Convert.ToInt32(yrsLeftDropDwn.Value), 
-                    Convert.ToInt32(blockIDDropDown.SelectedItem.ToString()), Convert.ToInt32(crimeIDDropDwn.SelectedItem.ToString()));
+                    Convert.ToInt32(blockIDDropDown.SelectedItem.ToString()));
                 this.ResetGrid();
             }
             else
@@ -96,8 +82,7 @@ namespace _421_Jail
                 editBirthdayCalendar.SetDate(foundInmate.Birthday);
                 editHealthTxt.Text = foundInmate.HealthStatus;
                 editArrivalCalendar.SetDate(foundInmate.ArrivalDate);
-                editYrsLeftDropDwn.Value = foundInmate.YearsLeft; //FIXME: DOUBLE?
-                editCrimeIDDropDwn.SelectedItem = foundInmate.Crime_ID; //FIXME: DOUBLE?
+                editYrsLeftNumbers.Value = foundInmate.YearsLeft; //FIXME: DOUBLE?
                 editBlockIDDropDwn.SelectedItem = foundInmate.BlockID; //FIXME: DOUBLE?
             }
             else
@@ -108,8 +93,7 @@ namespace _421_Jail
                 editBirthdayCalendar.SetDate(DateTime.Now);
                 editHealthTxt.Text = "";
                 editArrivalCalendar.SetDate(DateTime.Now);
-                editYrsLeftDropDwn.Value = 0; //FIXME: DOUBLE?
-                editCrimeIDDropDwn.SelectedItem = 0; //FIXME: DOUBLE?
+                editYrsLeftNumbers.Value = 0; //FIXME: DOUBLE?
                 editBlockIDDropDwn.SelectedItem = 0; //FIXME: DOUBLE?
             }
             this.ResetGrid();
@@ -117,11 +101,11 @@ namespace _421_Jail
 
         private void editInmateBtn_Click(object sender, EventArgs e)
         {
-            bool check = CheckEntries(addIDTxt.Text, addSSNTxt.Text, addFnameTxt.Text, addLnameTxt.Text, addHealthTxt.Text);
+            bool check = CheckEntries(editIDTxt.Text, editSSNTxt.Text, editFnameTxt.Text, editLnameTxt.Text, editHealthTxt.Text);
             if (check == true)
             {
                 InmateQueries.InmateEdit(Convert.ToInt32(editIDTxt.Text), editFnameTxt.Text, editLnameTxt.Text, editBirthdayCalendar.SelectionRange.Start,
-                    editHealthTxt.Text, editArrivalCalendar.SelectionRange.Start, Convert.ToInt32(editYrsLeftDropDwn.Value), Convert.ToInt32(editBlockIDDropDwn.SelectedItem.ToString()), Convert.ToInt32(editCrimeIDDropDwn.SelectedItem.ToString()));
+                    editHealthTxt.Text, editArrivalCalendar.SelectionRange.Start, Convert.ToInt32(editYrsLeftNumbers.Value), Convert.ToInt32(editBlockIDDropDwn.SelectedItem.ToString()));
                 this.ResetGrid();
             }
             else

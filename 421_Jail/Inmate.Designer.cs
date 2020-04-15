@@ -39,13 +39,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -72,16 +70,14 @@
             this.label26 = new System.Windows.Forms.Label();
             this.deleteIDTxt = new System.Windows.Forms.TextBox();
             this.yrsLeftDropDwn = new System.Windows.Forms.NumericUpDown();
-            this.editYrsLeftDropDwn = new System.Windows.Forms.NumericUpDown();
+            this.editYrsLeftNumbers = new System.Windows.Forms.NumericUpDown();
             this.addInmateBtn = new System.Windows.Forms.Button();
             this.tryAgainLbl = new System.Windows.Forms.Label();
-            this.crimeIDDropDwn = new System.Windows.Forms.ComboBox();
-            this.editCrimeIDDropDwn = new System.Windows.Forms.ComboBox();
             this.blockIDDropDown = new System.Windows.Forms.ComboBox();
             this.editBlockIDDropDwn = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.inmateGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yrsLeftDropDwn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftDropDwn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftNumbers)).BeginInit();
             this.SuspendLayout();
             // 
             // addIDTxt
@@ -173,15 +169,6 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Health Status";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(146, 537);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Crime ID";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -194,7 +181,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(145, 564);
+            this.label10.Location = new System.Drawing.Point(149, 537);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 20;
@@ -203,7 +190,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(492, 597);
+            this.label13.Location = new System.Drawing.Point(494, 569);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 42;
@@ -226,15 +213,6 @@
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 40;
             this.label15.Text = "Arrival Date";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(493, 569);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 39;
-            this.label16.Text = "Crime ID";
             // 
             // label17
             // 
@@ -346,7 +324,7 @@
             // 
             // editInmateBtn
             // 
-            this.editInmateBtn.Location = new System.Drawing.Point(366, 619);
+            this.editInmateBtn.Location = new System.Drawing.Point(366, 597);
             this.editInmateBtn.Name = "editInmateBtn";
             this.editInmateBtn.Size = new System.Drawing.Size(120, 23);
             this.editInmateBtn.TabIndex = 47;
@@ -460,14 +438,14 @@
             // 
             // editYrsLeftDropDwn
             // 
-            this.editYrsLeftDropDwn.Location = new System.Drawing.Point(367, 540);
-            this.editYrsLeftDropDwn.Name = "editYrsLeftDropDwn";
-            this.editYrsLeftDropDwn.Size = new System.Drawing.Size(120, 20);
-            this.editYrsLeftDropDwn.TabIndex = 63;
+            this.editYrsLeftNumbers.Location = new System.Drawing.Point(367, 540);
+            this.editYrsLeftNumbers.Name = "editYrsLeftDropDwn";
+            this.editYrsLeftNumbers.Size = new System.Drawing.Size(120, 20);
+            this.editYrsLeftNumbers.TabIndex = 63;
             // 
             // addInmateBtn
             // 
-            this.addInmateBtn.Location = new System.Drawing.Point(18, 587);
+            this.addInmateBtn.Location = new System.Drawing.Point(17, 561);
             this.addInmateBtn.Name = "addInmateBtn";
             this.addInmateBtn.Size = new System.Drawing.Size(120, 23);
             this.addInmateBtn.TabIndex = 68;
@@ -483,29 +461,11 @@
             this.tryAgainLbl.Size = new System.Drawing.Size(0, 13);
             this.tryAgainLbl.TabIndex = 69;
             // 
-            // crimeIDDropDwn
-            // 
-            this.crimeIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.crimeIDDropDwn.FormattingEnabled = true;
-            this.crimeIDDropDwn.Location = new System.Drawing.Point(19, 534);
-            this.crimeIDDropDwn.Name = "crimeIDDropDwn";
-            this.crimeIDDropDwn.Size = new System.Drawing.Size(121, 21);
-            this.crimeIDDropDwn.TabIndex = 70;
-            // 
-            // editCrimeIDDropDwn
-            // 
-            this.editCrimeIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editCrimeIDDropDwn.FormattingEnabled = true;
-            this.editCrimeIDDropDwn.Location = new System.Drawing.Point(366, 566);
-            this.editCrimeIDDropDwn.Name = "editCrimeIDDropDwn";
-            this.editCrimeIDDropDwn.Size = new System.Drawing.Size(121, 21);
-            this.editCrimeIDDropDwn.TabIndex = 71;
-            // 
             // blockIDDropDown
             // 
             this.blockIDDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.blockIDDropDown.FormattingEnabled = true;
-            this.blockIDDropDown.Location = new System.Drawing.Point(19, 561);
+            this.blockIDDropDown.Location = new System.Drawing.Point(17, 534);
             this.blockIDDropDown.Name = "blockIDDropDown";
             this.blockIDDropDown.Size = new System.Drawing.Size(121, 21);
             this.blockIDDropDown.TabIndex = 72;
@@ -514,7 +474,7 @@
             // 
             this.editBlockIDDropDwn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.editBlockIDDropDwn.FormattingEnabled = true;
-            this.editBlockIDDropDwn.Location = new System.Drawing.Point(367, 592);
+            this.editBlockIDDropDwn.Location = new System.Drawing.Point(367, 566);
             this.editBlockIDDropDwn.Name = "editBlockIDDropDwn";
             this.editBlockIDDropDwn.Size = new System.Drawing.Size(121, 21);
             this.editBlockIDDropDwn.TabIndex = 73;
@@ -527,11 +487,9 @@
             this.ClientSize = new System.Drawing.Size(1051, 749);
             this.Controls.Add(this.editBlockIDDropDwn);
             this.Controls.Add(this.blockIDDropDown);
-            this.Controls.Add(this.editCrimeIDDropDwn);
-            this.Controls.Add(this.crimeIDDropDwn);
             this.Controls.Add(this.tryAgainLbl);
             this.Controls.Add(this.addInmateBtn);
-            this.Controls.Add(this.editYrsLeftDropDwn);
+            this.Controls.Add(this.editYrsLeftNumbers);
             this.Controls.Add(this.yrsLeftDropDwn);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.deleteInmateBtn);
@@ -550,7 +508,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
@@ -564,7 +521,6 @@
             this.Controls.Add(this.editIDTxt);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -580,7 +536,7 @@
             this.Text = "Inmate";
             ((System.ComponentModel.ISupportInitialize)(this.inmateGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yrsLeftDropDwn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftDropDwn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editYrsLeftNumbers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,13 +555,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -632,11 +586,9 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox deleteIDTxt;
         private System.Windows.Forms.NumericUpDown yrsLeftDropDwn;
-        private System.Windows.Forms.NumericUpDown editYrsLeftDropDwn;
+        private System.Windows.Forms.NumericUpDown editYrsLeftNumbers;
         private System.Windows.Forms.Button addInmateBtn;
         private System.Windows.Forms.Label tryAgainLbl;
-        private System.Windows.Forms.ComboBox crimeIDDropDwn;
-        private System.Windows.Forms.ComboBox editCrimeIDDropDwn;
         private System.Windows.Forms.ComboBox blockIDDropDown;
         private System.Windows.Forms.ComboBox editBlockIDDropDwn;
     }

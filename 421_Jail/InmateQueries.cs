@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
 
 
@@ -20,12 +18,9 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open) //and others
                 {
-                    SqlCommand cmd = new SqlCommand(@"SELECT  INMATE.InmateID, INMATE.ISSN, INMATE.Fname, INMATE.Lname, INMATE.Birthday, 
-                                                    INMATE.HealthStatus, INMATE.ArrivalDate, INMATE.YearsLeft, INMATE.BlockID,
-                                                    CRIMEID.CrimeID
-                                                    FROM INMATE
-                                                    LEFT JOIN CRIMEID
-                                                    ON INMATE.InmateID = CRIMEID.InmateID", sqlCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT INMATE.InmateID, INMATE.ISSN, INMATE.Fname, INMATE.Lname, INMATE.Birthday, 
+                                                    INMATE.HealthStatus, INMATE.ArrivalDate, INMATE.YearsLeft, INMATE.BlockID
+                                                    FROM INMATE", sqlCon);
                     SqlDataReader inmateReader = cmd.ExecuteReader();
                     while (inmateReader.Read())
                     {
@@ -40,7 +35,6 @@ namespace _421_Jail
                             ArrivalDate = inmateReader.GetDateTime(inmateReader.GetOrdinal("ArrivalDate")),
                             YearsLeft = inmateReader.GetInt32(inmateReader.GetOrdinal("YearsLeft")),
                             BlockID = inmateReader.GetInt32(inmateReader.GetOrdinal("BlockID")),
-                            Crime_ID = inmateReader.GetInt32(inmateReader.GetOrdinal("CrimeID"))
                         });
                     }
                 }
@@ -73,19 +67,10 @@ namespace _421_Jail
                             BlockID = reader.GetInt32(reader.GetOrdinal("BlockID"))
                         };
                     }
-                    reader.Close();
-                    SqlCommand crimeIDCmd = new SqlCommand("SELECT * FROM CRIMEID WHERE InmateID = @inmateID", sqlCon);
-                    crimeIDCmd.Parameters.AddWithValue("@inmateID", inmateID);
-                    SqlDataReader crimeIDReader = crimeIDCmd.ExecuteReader();
-                    while (crimeIDReader.Read())
-                    {
-                        singleInmate.Crime_ID = crimeIDReader.GetInt32(crimeIDReader.GetOrdinal("CrimeID"));
-                    }
                 }
             }
             return singleInmate;
         }
-
 
         public static void InmateDeletion(int inmateID)
         {
@@ -103,7 +88,7 @@ namespace _421_Jail
                 }
             }
         }
-        public static void InmateAddition(int inmateID, string issn, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yrsLeft, int blockID, int crimeID)
+        public static void InmateAddition(int inmateID, string issn, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yrsLeft, int blockID)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -121,17 +106,10 @@ namespace _421_Jail
                     cmd.Parameters.AddWithValue("@yrsLeft", yrsLeft); //int
                     cmd.Parameters.AddWithValue("@blockID", blockID); //int
                     cmd.ExecuteNonQuery();
-
-
-                    //FIXME: need to accomodate multiple crime IDs
-                    SqlCommand crimeIDCmd = new SqlCommand("INSERT INTO CRIMEID (CrimeID, InmateID) VALUES (@crimeID, @inmateID)", sqlCon);
-                    crimeIDCmd.Parameters.AddWithValue("@inmateID", inmateID); //int
-                    crimeIDCmd.Parameters.AddWithValue("@crimeID", crimeID); //int
-                    crimeIDCmd.ExecuteNonQuery();
                 }
             }
         }
-        public static void InmateEdit(int inmateID, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yearsLeft, int blockID, int crimeID)
+        public static void InmateEdit(int inmateID, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yearsLeft, int blockID)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -155,31 +133,9 @@ namespace _421_Jail
                     cmd.Parameters.AddWithValue("@yearsLeft", yearsLeft);
                     cmd.Parameters.AddWithValue("@blockID", blockID);
                     cmd.Parameters.AddWithValue("@inmateID", inmateID);
-
-                    SqlCommand crimeIDCmd = new SqlCommand(@"UPDATE CRIMEID SET CrimeID = @crimeID ");
-
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
-
-        public static List<int> FillCrimeIDDropDown()
-        {
-            List<int> filling = new List<int>();
-            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
-            {
-                sqlCon.Open();
-                if (sqlCon.State == System.Data.ConnectionState.Open)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT CrimeID FROM CRIME", sqlCon);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        filling.Add(reader.GetInt32(reader.GetOrdinal("CrimeID")));
-                    }
-                }
-            }
-            return filling;
         }
 
         public static List<int> FillBlockIDDropDown()

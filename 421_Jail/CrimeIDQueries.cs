@@ -123,8 +123,6 @@ namespace _421_Jail
         }
     }
 
-
-
     public class CrimeIDModel
     {
         public int ID { get; set; }
