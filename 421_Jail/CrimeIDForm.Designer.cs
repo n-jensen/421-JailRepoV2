@@ -32,21 +32,25 @@
             this.inmateIDTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.findIDBtn = new System.Windows.Forms.Button();
-            this.changeBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.changesTxt = new System.Windows.Forms.TextBox();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.deleteTxt = new System.Windows.Forms.TextBox();
+            this.deleteInmateIdTxt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.crimeDropDown = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.addCrimeInmateIdTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.addCrime = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crimeIDGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // crimeIDGrid
             // 
             this.crimeIDGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.crimeIDGrid.Location = new System.Drawing.Point(23, 120);
+            this.crimeIDGrid.Location = new System.Drawing.Point(23, 169);
             this.crimeIDGrid.Name = "crimeIDGrid";
-            this.crimeIDGrid.Size = new System.Drawing.Size(275, 232);
+            this.crimeIDGrid.Size = new System.Drawing.Size(585, 248);
             this.crimeIDGrid.TabIndex = 0;
             // 
             // inmateIDTxt
@@ -75,67 +79,108 @@
             this.findIDBtn.UseVisualStyleBackColor = true;
             this.findIDBtn.Click += new System.EventHandler(this.findIDBtn_Click);
             // 
-            // changeBtn
-            // 
-            this.changeBtn.Location = new System.Drawing.Point(283, 84);
-            this.changeBtn.Name = "changeBtn";
-            this.changeBtn.Size = new System.Drawing.Size(100, 23);
-            this.changeBtn.TabIndex = 6;
-            this.changeBtn.Text = "Find Inmate";
-            this.changeBtn.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Enter an inmate\'s ID to make changes??";
-            // 
-            // changesTxt
-            // 
-            this.changesTxt.Location = new System.Drawing.Point(283, 57);
-            this.changesTxt.Name = "changesTxt";
-            this.changesTxt.Size = new System.Drawing.Size(100, 20);
-            this.changesTxt.TabIndex = 4;
-            // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(501, 84);
+            this.deleteBtn.Location = new System.Drawing.Point(304, 109);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(100, 23);
             this.deleteBtn.TabIndex = 9;
-            this.deleteBtn.Text = "Delete Inmate";
+            this.deleteBtn.Text = "Delete Crime Inmate";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(498, 41);
+            this.label3.Location = new System.Drawing.Point(303, 41);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 13);
+            this.label3.Size = new System.Drawing.Size(274, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Enter an inmate\'s ID to delete .....";
+            this.label3.Text = "Enter ID of the crime you wish to remove from the Inmate";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // deleteTxt
             // 
-            this.deleteTxt.Location = new System.Drawing.Point(501, 57);
+            this.deleteTxt.Location = new System.Drawing.Point(306, 57);
             this.deleteTxt.Name = "deleteTxt";
             this.deleteTxt.Size = new System.Drawing.Size(100, 20);
             this.deleteTxt.TabIndex = 7;
+            // 
+            // deleteInmateIdTxt
+            // 
+            this.deleteInmateIdTxt.Location = new System.Drawing.Point(306, 83);
+            this.deleteInmateIdTxt.Name = "deleteInmateIdTxt";
+            this.deleteInmateIdTxt.Size = new System.Drawing.Size(100, 20);
+            this.deleteInmateIdTxt.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(412, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Inmate ID";
+            // 
+            // crimeDropDown
+            // 
+            this.crimeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.crimeDropDown.FormattingEnabled = true;
+            this.crimeDropDown.Location = new System.Drawing.Point(603, 57);
+            this.crimeDropDown.Name = "crimeDropDown";
+            this.crimeDropDown.Size = new System.Drawing.Size(121, 21);
+            this.crimeDropDown.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(731, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "ID of crime to add";
+            // 
+            // addCrimeInmateIdTxt
+            // 
+            this.addCrimeInmateIdTxt.Location = new System.Drawing.Point(603, 83);
+            this.addCrimeInmateIdTxt.Name = "addCrimeInmateIdTxt";
+            this.addCrimeInmateIdTxt.Size = new System.Drawing.Size(100, 20);
+            this.addCrimeInmateIdTxt.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(709, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Inmate ID";
+            // 
+            // addCrime
+            // 
+            this.addCrime.Location = new System.Drawing.Point(596, 109);
+            this.addCrime.Name = "addCrime";
+            this.addCrime.Size = new System.Drawing.Size(128, 23);
+            this.addCrime.TabIndex = 16;
+            this.addCrime.Text = "Add Crime To Inamte";
+            this.addCrime.UseVisualStyleBackColor = true;
+            this.addCrime.Click += new System.EventHandler(this.addCrime_Click);
             // 
             // CrimeIDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 374);
+            this.ClientSize = new System.Drawing.Size(834, 513);
+            this.Controls.Add(this.addCrime);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.addCrimeInmateIdTxt);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.crimeDropDown);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.deleteInmateIdTxt);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.deleteTxt);
-            this.Controls.Add(this.changeBtn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.changesTxt);
             this.Controls.Add(this.findIDBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inmateIDTxt);
@@ -154,11 +199,15 @@
         private System.Windows.Forms.TextBox inmateIDTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button findIDBtn;
-        private System.Windows.Forms.Button changeBtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox changesTxt;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox deleteTxt;
+        private System.Windows.Forms.TextBox deleteInmateIdTxt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox crimeDropDown;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox addCrimeInmateIdTxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button addCrime;
     }
 }
