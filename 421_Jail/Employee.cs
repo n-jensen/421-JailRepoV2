@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -96,7 +97,8 @@ namespace _421_Jail
                 stateEditTxt.Text = emp.State;
                 zipEditTxt.Text = emp.Zip;
                 empTypeEditComboBox.SelectedItem = emp.EmpType;
-                empInfoEditTxt.Text = emp.TypeInfo.ToString();
+                empInfoEditCombobox.Items.Add(emp.TypeInfo);
+                empInfoEditCombobox.SelectedItem = emp.TypeInfo;
             }
             else
             {
@@ -109,7 +111,7 @@ namespace _421_Jail
                 stateEditTxt.Text = "";
                 zipEditTxt.Text = "";
                 empTypeEditComboBox.SelectedItem = null;
-                empInfoEditTxt.Text = "";
+                empInfoEditCombobox.SelectedItem = null;
             }
         }
 
@@ -122,14 +124,14 @@ namespace _421_Jail
         private void editButton_Click(object sender, EventArgs e)
         {
             bool check = CheckEntries(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text, payrollEditTxt.Value, streetEditTxt.Text,
-                cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditTxt.Text);
-            bool checkGuard = Queries.CheckGuardsBlock(Convert.ToInt32(empInfoEditTxt.Text));
-            if (check == true && checkGuard == true)
+                cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
+            //bool checkGuard = Queries.CheckGuardsBlock(Convert.ToInt32(empInfoEditCombobox.SelectedItem?.ToString()));
+            if (check == true )//&& checkGuard == true)
             {
                 tryAgainLbl.Text = "";
                 Queries.EmpEdit(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text,
                   birthdayEditTxt.SelectionRange.Start, payrollEditTxt.Value, streetEditTxt.Text, cityEditTxt.Text,
-                  stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditTxt.Text);
+                  stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
                 this.ResetGrid();
             }
             else
@@ -143,19 +145,53 @@ namespace _421_Jail
 
             //checks first column
             if (type == "GUARD")
+            {
                 empTypeInfoLbl.Text = "Block ID";
+            }
             else if (type == "DESK")
+            {
                 empTypeInfoLbl.Text = "Desk #";
+            }
             else if (type == "CARE")
+            {
                 empTypeInfoLbl.Text = "Care Type";
+            }
 
             //checks 2nd column
             if (editType == "GUARD")
+            {
                 editEmpTypeInfoLbl.Text = "Block ID";
+                empInfoEditCombobox.Items.Clear();
+                List<int> blockslist = Queries.GrabAssignedBlocks();
+                foreach (var x in blockslist)
+                    empInfoEditCombobox.Items.Add(x);
+                typeTimer.Stop();
+            }
             else if (editType == "DESK")
+            {
                 editEmpTypeInfoLbl.Text = "Desk #";
+                empInfoEditCombobox.Items.Clear();
+                List<int> deskslist = Queries.GrabDeskNumbers();
+                foreach (var x in deskslist)
+                    empInfoEditCombobox.Items.Add(x);
+                typeTimer.Stop();
+
+            }
             else if (editType == "CARE")
+            {
                 editEmpTypeInfoLbl.Text = "Care Type";
+                empInfoEditCombobox.Items.Clear();
+                List<string> carelist = Queries.GrabCareTypes();
+                foreach (var x in carelist)
+                    empInfoEditCombobox.Items.Add(x);
+                typeTimer.Stop();
+            }
+            
+        }
+
+        private void empTypeBtn_Click(object sender, EventArgs e)
+        {
+            typeTimer.Start();
         }
     }
 }

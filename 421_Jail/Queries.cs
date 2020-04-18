@@ -282,6 +282,70 @@ namespace _421_Jail
             }
         }
 
+        public static List<int> GrabAssignedBlocks()
+        {
+            List<int> blockList = new List<int>();
+            int block = 0;
+            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            {
+                sqlCon.Open();
+                if (sqlCon.State == System.Data.ConnectionState.Open)
+                {
+                    SqlCommand grabGuardInfo = new SqlCommand("SELECT AssignedBlock FROM GUARD", sqlCon);
+                    SqlDataReader reader = grabGuardInfo.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        block = reader.GetInt32(reader.GetOrdinal("AssignedBlock"));
+                        blockList.Add(block);
+                    }
+                }
+            }
+            return blockList;
+        }
+
+        public static List<string> GrabCareTypes()
+        {
+            List<string> careList = new List<string>();
+            string care = "";
+            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            {
+                sqlCon.Open();
+                if (sqlCon.State == System.Data.ConnectionState.Open)
+                {
+                    SqlCommand grabCareInfo = new SqlCommand("SELECT CareType FROM CARE", sqlCon);
+                    SqlDataReader reader = grabCareInfo.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        care = reader.GetString(reader.GetOrdinal("CareType"));
+                        careList.Add(care);
+                    }
+                }
+            }
+            return careList;
+        }
+
+        public static List<int> GrabDeskNumbers()
+        {
+            List<int> deskList = new List<int>();
+            int desk = 0;
+            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            {
+                sqlCon.Open();
+                if (sqlCon.State == System.Data.ConnectionState.Open)
+                {
+                    SqlCommand grabDeskInfo = new SqlCommand("SELECT DeskNumber FROM DESK", sqlCon);
+                    SqlDataReader reader = grabDeskInfo.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        desk = reader.GetInt32(reader.GetOrdinal("DeskNumber"));
+                        deskList.Add(desk);
+                    }
+                }
+            }
+            return deskList;
+        }
+
+
         //query to check guard's block ID
         public static bool CheckGuardsBlock(int blockID)
         {
