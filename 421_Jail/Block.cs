@@ -17,7 +17,6 @@ namespace _421_Jail
                this.BlockGrid.Columns.Add("BlockID", "BlockID");
                this.BlockGrid.Columns.Add("Bname", "Bname");
                this.BlockGrid.Columns.Add("Location", "Location");
-               this.BlockGrid.Columns.Add("NumOfInmates", "NumOfInmates");
                this.ResetGrid();
                
           }
@@ -30,16 +29,15 @@ namespace _421_Jail
                     this.BlockGrid.Rows.Add(
                          x.BlockID,
                          x.BName,
-                         x.Location,
-                         x.NumOfInmates
+                         x.Location
                          );
                }
           }
 
-          private bool CheckEntries(string BlockID, string BName, string Location, int NumOfInmates)
+          private bool CheckEntries(string BlockID, string BName, string Location)
           {
-               return BlockID != "" && BName != "" && Location != "" && NumOfInmates > Decimal.Parse(0.0.ToString())   
-                   && BlockID.Length == 9 && BName.Length <= 20 && Location.Length <= 20;
+               return BlockID != "" && BName != "" && Location != ""   
+                      && BlockID.Length == 9 && BName.Length <= 20 && Location.Length <= 20;
           }
 
 
@@ -51,8 +49,6 @@ namespace _421_Jail
                Console.WriteLine(updateBlockName.Text);
                updateBlockLocation.Text = block1.Location;
                Console.WriteLine(updateBlockLocation.Text);
-               updateNumberOfInmates.Text = block1.NumOfInmates.ToString();
-               Console.WriteLine(updateNumberOfInmates);
           }
 
 
@@ -66,14 +62,13 @@ namespace _421_Jail
 
           private void addBlockButton_Click_1(object sender, EventArgs e)
           {
-               int userVal = int.Parse(addNumOfInmates.Text);
                int blockIDVal = int.Parse(addBlockID.Text);
                //int.TryParse(addNumOfInmates.Text, out userVal);`
-               bool check = CheckEntries(addBlockID.Text, addBlockName.Text, addBlockLocation.Text, userVal);
+               bool check = CheckEntries(addBlockID.Text, addBlockName.Text, addBlockLocation.Text);
                if (check == true)
                {
                     tryAgainLb2.Text = "";
-                    Queries.BlockAddition(blockIDVal, addBlockName.Text, addBlockLocation.Text, userVal);
+                    Queries.BlockAddition(blockIDVal, addBlockName.Text, addBlockLocation.Text);
                     this.ResetGrid();
                }
                else
@@ -84,14 +79,13 @@ namespace _421_Jail
 
           private void editBlockButton_Click_1(object sender, EventArgs e)
           {
-               int userVal = int.Parse(updateNumberOfInmates.Text);
                int blockIDVal = int.Parse(editBlockID.Text);
                //int.TryParse(addNumOfInmates.Text, out userVal);`
-               bool check = CheckEntries(editBlockID.Text, updateBlockName.Text, updateBlockLocation.Text, userVal);
+               bool check = CheckEntries(editBlockID.Text, updateBlockName.Text, updateBlockLocation.Text);
                if (check == true)
                {
                     tryAgainLb2.Text = "";
-                    Queries.BlockEdit(blockIDVal, updateBlockName.Text, updateBlockLocation.Text, userVal);
+                    Queries.BlockEdit(blockIDVal, updateBlockName.Text, updateBlockLocation.Text);
                     this.ResetGrid();
                }
                else

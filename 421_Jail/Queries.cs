@@ -38,8 +38,8 @@ namespace _421_Jail
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read()) //adds db info into an Employees-type variable
                     {
-                        var extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
-                        var empType = "GUARD";
+                        var extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
+                        var empType = "DESK";
                         if (extraInfo == null || extraInfo == "")
                         {
                             extraInfo = reader.GetValue(reader.GetOrdinal("CareType")).ToString();
@@ -47,8 +47,8 @@ namespace _421_Jail
                         }
                         if (extraInfo == null || extraInfo == "")
                         {
-                            extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
-                            empType = "DESK";
+                             extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
+                             empType = "GUARD";
                         }
                         Employees.Add(new Employees
                         {
@@ -101,8 +101,8 @@ namespace _421_Jail
                     SqlDataReader reader = sqlCmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
-                        var empType = "GUARD";
+                        var extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
+                        var empType = "DESK";
                         if (extraInfo == null || extraInfo == "")
                         {
                             extraInfo = reader.GetValue(reader.GetOrdinal("CareType")).ToString();
@@ -110,8 +110,8 @@ namespace _421_Jail
                         }
                         if (extraInfo == null || extraInfo == "")
                         {
-                            extraInfo = reader.GetValue(reader.GetOrdinal("DeskNumber")).ToString();
-                            empType = "DESK";
+                            extraInfo = reader.GetValue(reader.GetOrdinal("AssignedBlock")).ToString();
+                            empType = "GUARD";
                         }
                         employees = new Employees
                         {
@@ -142,9 +142,6 @@ namespace _421_Jail
                     sqlCon.Open();
                     if (sqlCon.State == System.Data.ConnectionState.Open)
                     {
-                        SqlCommand sqlCmd = new SqlCommand("DELETE FROM EMPLOYEE WHERE ESSN = @ESSN", sqlCon);
-                        sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
-                        sqlCmd.ExecuteNonQuery();
                         if (employee?.EmpType == "GUARD")
                         {
                             SqlCommand delEmpType = new SqlCommand("DELETE FROM GUARD WHERE ESSN = @ESSN", sqlCon);
@@ -163,6 +160,9 @@ namespace _421_Jail
                             delEmpType.Parameters.AddWithValue("@ESSN", ESSN);
                             delEmpType.ExecuteNonQuery();
                         }
+                        SqlCommand sqlCmd = new SqlCommand("DELETE FROM EMPLOYEE WHERE ESSN = @ESSN", sqlCon);
+                        sqlCmd.Parameters.AddWithValue("@ESSN", ESSN);
+                        sqlCmd.ExecuteNonQuery();
                     }
                 }
             }
@@ -310,7 +310,7 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand cmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location, BLOCK.NumOfInmates FROM BLOCK", sqlCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location FROM BLOCK", sqlCon);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -318,8 +318,7 @@ namespace _421_Jail
                         {
                             BlockID = reader.GetInt32(reader.GetOrdinal("BlockID")),
                             BName = reader.GetString(reader.GetOrdinal("BName")).Trim(),
-                            Location = reader.GetString(reader.GetOrdinal("Location")).Trim(),
-                            NumOfInmates = reader.GetInt32(reader.GetOrdinal("NumOfInmates"))
+                            Location = reader.GetString(reader.GetOrdinal("Location")).Trim()
                         });
                               
                     }
@@ -337,7 +336,7 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location,BLOCK.NumOfInmates FROM BLOCK WHERE BLOCK.BlockID = @BlockID", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand(@"SELECT BLOCK.BlockID,BLOCK.BName,BLOCK.Location FROM BLOCK WHERE BLOCK.BlockID = @BlockID", sqlCon);
                         // string blockID = BlockID.ToString();
                     sqlCmd.Parameters.AddWithValue("@BlockID", BlockID);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
@@ -348,7 +347,6 @@ namespace _421_Jail
                             BlockID = reader.GetInt32(reader.GetOrdinal("BlockID")),
                             BName = reader.GetString(reader.GetOrdinal("BName")).Trim(),
                             Location = reader.GetString(reader.GetOrdinal("Location")).Trim(),
-                            NumOfInmates = reader.GetInt32(reader.GetOrdinal("NumOfInmates"))
                         };
                     }
                 }
@@ -371,24 +369,23 @@ namespace _421_Jail
             }
         }
         //Add Block info
-        public static void BlockAddition(int BlockID, string BName, string Location, int NumOfInmates)
+        public static void BlockAddition(int BlockID, string BName, string Location)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO BLOCK VALUES (@BlockID, @BName, @Location, @NumOfInmates)", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO BLOCK VALUES (@BlockID, @BName, @Location)", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@BlockID", BlockID);
                     sqlCmd.Parameters.AddWithValue("@BName", BName);
                     sqlCmd.Parameters.AddWithValue("@Location", Location);
-                    sqlCmd.Parameters.AddWithValue("@NumOfInmates", NumOfInmates);
                     sqlCmd.ExecuteNonQuery();
                 }
             }
         }
         //Edit Block info
-        public static void BlockEdit(int BlockID, string BName, string Location, int NumOfInmates)
+        public static void BlockEdit(int BlockID, string BName, string Location)
         {
             var block = DisplayBlockInfo(BlockID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
@@ -398,14 +395,11 @@ namespace _421_Jail
                 {
                     SqlCommand sqlCmd = new SqlCommand(@"UPDATE BLOCK 
                                                          SET Bname = @Bname, 
-                                                         Location = @Location, 
-                                                         NumOfInmates = @NumOfInmates 
+                                                         Location = @Location
                                                          WHERE BlockID = @BlockID", sqlCon);
-
                     sqlCmd.Parameters.AddWithValue("@BlockID", BlockID);
                     sqlCmd.Parameters.AddWithValue("@Bname", BName);
                     sqlCmd.Parameters.AddWithValue("@Location", Location);
-                    sqlCmd.Parameters.AddWithValue("@NumOfInmates", NumOfInmates);
                     sqlCmd.ExecuteNonQuery();
                 }
             }
@@ -430,11 +424,11 @@ namespace _421_Jail
         public string TypeInfo { get; set; }
     }
 
-     public class BlockModel {
+     public class BlockModel
+     {
           public int BlockID { get; set; }
           public string BName { get; set; }
           public string Location { get; set; }
-          public int NumOfInmates { get; set; }
      }
 
 
