@@ -39,5 +39,11 @@ namespace _421_Jail
             CrimeIDForm cid = new CrimeIDForm();
             cid.Show();
         }
+
+        private void CButton_Click(object sender, EventArgs e)
+        {
+            Crime crime = new Crime();
+            crime.Show();
+        }
     }
 }
