@@ -345,26 +345,6 @@ namespace _421_Jail
             return deskList;
         }
 
-
-        //query to check guard's block ID
-        public static bool CheckGuardsBlock(int blockID)
-        {
-            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
-            {
-                sqlCon.Open();
-                bool retType = false;
-                SqlCommand grabbingGuard = new SqlCommand("SELECT BlockID FROM BLOCK", sqlCon);// WHERE BlockID = @blockID", sqlCon);
-                SqlDataReader readBlockID = grabbingGuard.ExecuteReader();
-                int BlockID = 0; 
-                while (readBlockID.Read())
-                {
-                    BlockID = readBlockID.GetInt32(readBlockID.GetOrdinal("BlockID"));
-                    if (BlockID == blockID)
-                        retType = true;
-                }
-                return retType;
-            }
-        }
         //Block query
         public static List<BlockModel> GetBlockInfo()
         {
