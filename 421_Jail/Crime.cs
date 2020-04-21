@@ -46,7 +46,7 @@ namespace _421_Jail
 
         private void crimeDeleteButton_Click(object sender, EventArgs e)
         {
-            int crimeIDVal = int.Parse(deleteCrimeTextBox.Text);
+            int crimeIDVal = int.Parse(deleteCrimeTextBox.Text.Trim());
             Queries.CrimeDeletion(crimeIDVal);
             this.ResetGrid();
         }
@@ -54,12 +54,12 @@ namespace _421_Jail
        private void addCrimeButton(object sender, EventArgs e)
         {
             int crimeIDVal = int.Parse(addCrimeIDTextBox.Text);
-            string userVal = addSeverity.Text;
+            string userVal = addSeverity.Text.Trim();
             bool check = CheckEntries(crimeIDVal, crimeTextbox.Text, userVal);
             if (check == true)
             {
                 tryAgainLabel.Text = "";
-                Queries.CrimeAddition(crimeIDVal, crimeTextbox.Text, userVal);
+                Queries.CrimeAddition(crimeIDVal, crimeTextbox.Text.Trim(), userVal);
                 this.ResetGrid();
             }
             else
@@ -71,11 +71,11 @@ namespace _421_Jail
         private void crimeEditButton_Click_1(object sender, EventArgs e)
         {
             int crimeIDVal = int.Parse(findCrimeIDTextbox.Text);
-            bool check = CheckEntries(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
+            bool check = CheckEntries(crimeIDVal, editCrimeNameTextBox.Text.Trim(), editSeverityTextBox.Text.Trim());
             if (check == true)
             {
                 tryAgainLabel.Text = "";
-                Queries.CrimeEdit(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
+                Queries.CrimeEdit(crimeIDVal, editCrimeNameTextBox.Text.Trim(), editSeverityTextBox.Text.Trim());
                 this.ResetGrid();
             }
             else
