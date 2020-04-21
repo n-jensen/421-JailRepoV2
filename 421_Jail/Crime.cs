@@ -67,5 +67,27 @@ namespace _421_Jail
                 tryAgainLabel.Text = "Try Again: ((";
             }
         }
+
+        private void crimeEditButton_Click(object sender, EventArgs e)
+        {
+           int crimeIDVal = int.Parse(findCrimeIDTextbox.Text);
+            bool check = CheckEntries(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
+            if(check == true)
+            {
+                tryAgainLabel.Text = "";
+                Queries.CrimeEdit(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
+                this.ResetGrid();
+            }
+            else
+            {
+                tryAgainLabel.Text = "Try Again :((";
+            }
+       
+        }
+
+        private void editSeverityTextbox(object sender, EventArgs e)
+        {
+
+        }
     }
 }
