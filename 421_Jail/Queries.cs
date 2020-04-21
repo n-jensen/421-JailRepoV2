@@ -367,10 +367,10 @@ namespace _421_Jail
                               
                     }
                 }
-            }
-                 
+            }  
             return Block;
         }
+
         //Display Block info
         public static BlockModel DisplayBlockInfo(int BlockID)
         {
@@ -397,10 +397,10 @@ namespace _421_Jail
             }
             return block;
         }
+
         //Delete Block info
         public static void BlockDeletion(int BlockID)
         {
-            var block = DisplayBlockInfo(BlockID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -412,6 +412,7 @@ namespace _421_Jail
                 }
             }
         }
+
         //Add Block info
         public static void BlockAddition(int BlockID, string BName, string Location)
         {
@@ -428,10 +429,10 @@ namespace _421_Jail
                 }
             }
         }
+
         //Edit Block info
         public static void BlockEdit(int BlockID, string BName, string Location)
         {
-            var block = DisplayBlockInfo(BlockID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -460,21 +461,20 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand cmd = new SqlCommand(@"SELECT CRIME.CrimeID, CRIME.CName, CRIME.Severity FROM CRIME", sqlCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT CRIME.CrimeID, CRIME.Name, CRIME.Severity FROM CRIME", sqlCon);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         Crime.Add(new Crimes
                         {
                             CrimeID = reader.GetInt32(reader.GetOrdinal("CrimeID")),
-                            CrimeName = reader.GetString(reader.GetOrdinal("CName")).Trim(),
-                            Severity = reader.GetInt32(reader.GetOrdinal("Severity"))
+                            CrimeName = reader.GetString(reader.GetOrdinal("Name")).Trim(),
+                            Severity = reader.GetString(reader.GetOrdinal("Severity"))
                         });
 
                     }
                 }
             }
-
             return Crime;
         }
 
@@ -487,7 +487,7 @@ namespace _421_Jail
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand(@"SELECT CRIME.CrimeID, CRIME.CrimeName, CRIME.Severity FROM CRIME WHERE CRIME.CrimeID = @CrimeID", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand(@"SELECT CRIME.CrimeID, CRIME.Name, CRIME.Severity FROM CRIME WHERE CRIME.CrimeID = @CrimeID", sqlCon);
                     // string blockID = BlockID.ToString();
                     sqlCmd.Parameters.AddWithValue("@CrimeID", CrimeID);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
@@ -496,18 +496,18 @@ namespace _421_Jail
                         crime = new Crimes 
                         {
                             CrimeID = reader.GetInt32(reader.GetOrdinal("CrimeID")),
-                            CrimeName = reader.GetString(reader.GetOrdinal("CName")).Trim(),
-                            Severity = reader.GetInt32(reader.GetOrdinal("Severity"))
+                            CrimeName = reader.GetString(reader.GetOrdinal("Name")).Trim(),
+                            Severity = reader.GetString(reader.GetOrdinal("Severity"))
                         };
                     }
                 }
             }
             return crime;
         }
+
         //Delete Block info
         public static void CrimeDeletion(int CrimeID)
         {
-            var crime = DisplayCrimeInfo(CrimeID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -519,48 +519,46 @@ namespace _421_Jail
                 }
             }
         }
+
         //Add Crime info
-        public static void CrimeAddition(int CrimeID, string CrimeName, int Severity)
+        public static void CrimeAddition(int CrimeID, string CrimeName, string Severity)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO CRIME VALUES (@CrimeID, @CrimeName, @Severity)", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand("INSERT INTO CRIME VALUES (@CrimeID, @Name, @Severity)", sqlCon);
                     sqlCmd.Parameters.AddWithValue("@CrimeID", CrimeID);
-                    sqlCmd.Parameters.AddWithValue("@CrimeName", CrimeName);
+                    sqlCmd.Parameters.AddWithValue("@Name", CrimeName);
                     sqlCmd.Parameters.AddWithValue("@Severity", Severity);
                     sqlCmd.ExecuteNonQuery();
                 }
             }
         }
+
         //Edit Crime info
         public static void CrimeEdit(int CrimeID, string CrimeName, int Severity)
         {
-            var crime = DisplayCrimeInfo(CrimeID);
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
                 if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
                     SqlCommand sqlCmd = new SqlCommand(@"UPDATE CRIME 
-                                                         SET CrimeName = @CrimeName, 
+                                                         SET Name = @Name, 
                                                          Severity = @Severity,
                                                          WHERE CrimeID = @CrimeID", sqlCon);
 
                     sqlCmd.Parameters.AddWithValue("@CrimeID", CrimeID);
-                    sqlCmd.Parameters.AddWithValue("@CrimeName", CrimeName);
+                    sqlCmd.Parameters.AddWithValue("@Name", CrimeName);
                     sqlCmd.Parameters.AddWithValue("@Severity", Severity);
                     sqlCmd.ExecuteNonQuery();
                 }
             }
         }
     } // end of Crime Query
-
-
 }
-
 
     public class Employees
     {
@@ -585,11 +583,11 @@ namespace _421_Jail
      }
 
     public class Crimes
-{
-    public int CrimeID { get; set; }
-    public string CrimeName { get; set; }
-    public int Severity { get; set; }
-}
+    {
+        public int CrimeID { get; set; }
+        public string CrimeName { get; set; }
+        public string Severity { get; set; }
+    }
 
 
 

@@ -78,6 +78,7 @@
             this.CButton.TabIndex = 3;
             this.CButton.Text = "Crime Information";
             this.CButton.UseVisualStyleBackColor = false;
+            this.CButton.Click += new System.EventHandler(this.CButton_Click_1);
             // 
             // BButton
             // 

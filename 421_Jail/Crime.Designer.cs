@@ -75,7 +75,6 @@
             this.crimeNameLabel.Size = new System.Drawing.Size(64, 13);
             this.crimeNameLabel.TabIndex = 1;
             this.crimeNameLabel.Text = "Crime Name";
-            this.crimeNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // crimeTextbox
             // 
@@ -83,7 +82,6 @@
             this.crimeTextbox.Name = "crimeTextbox";
             this.crimeTextbox.Size = new System.Drawing.Size(100, 20);
             this.crimeTextbox.TabIndex = 2;
-            this.crimeTextbox.TextChanged += new System.EventHandler(this.addCrimeTextbox);
             // 
             // addSeverity
             // 
@@ -91,7 +89,6 @@
             this.addSeverity.Name = "addSeverity";
             this.addSeverity.Size = new System.Drawing.Size(100, 20);
             this.addSeverity.TabIndex = 6;
-            this.addSeverity.TextChanged += new System.EventHandler(this.addSeverityTextbox);
             // 
             // label2
             // 
@@ -101,7 +98,6 @@
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Severity (1-5 rating)";
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // crimeEditButton
             // 
@@ -111,7 +107,6 @@
             this.crimeEditButton.TabIndex = 9;
             this.crimeEditButton.Text = "Edit";
             this.crimeEditButton.UseVisualStyleBackColor = true;
-            this.crimeEditButton.Click += new System.EventHandler(this.crimeEditButton_Click);
             // 
             // crimeDeleteButton
             // 
@@ -129,7 +124,6 @@
             this.editCrimeNameTextBox.Name = "editCrimeNameTextBox";
             this.editCrimeNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.editCrimeNameTextBox.TabIndex = 13;
-            this.editCrimeNameTextBox.TextChanged += new System.EventHandler(this.editCrimeNameTextBox_TextChanged);
             // 
             // findCrimeIDTextbox
             // 
@@ -137,7 +131,6 @@
             this.findCrimeIDTextbox.Name = "findCrimeIDTextbox";
             this.findCrimeIDTextbox.Size = new System.Drawing.Size(100, 20);
             this.findCrimeIDTextbox.TabIndex = 11;
-            this.findCrimeIDTextbox.TextChanged += new System.EventHandler(this.findCrimeIDTextbox_TextChanged);
             // 
             // label1
             // 
@@ -147,7 +140,6 @@
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Add a crime type:";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // findCrimeLabel
             // 
@@ -157,7 +149,6 @@
             this.findCrimeLabel.Size = new System.Drawing.Size(138, 13);
             this.findCrimeLabel.TabIndex = 17;
             this.findCrimeLabel.Text = "Enter Crime ID to edit crime:";
-            this.findCrimeLabel.Click += new System.EventHandler(this.findCrimeLabel_Click);
             // 
             // findCrimeButton
             // 
@@ -175,7 +166,6 @@
             this.addCrimeIDTextBox.Name = "addCrimeIDTextBox";
             this.addCrimeIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.addCrimeIDTextBox.TabIndex = 19;
-            this.addCrimeIDTextBox.TextChanged += new System.EventHandler(this.addCrimeIDTextbox);
             // 
             // label3
             // 
@@ -185,7 +175,6 @@
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 20;
             this.label3.Text = "Crime ID";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -195,7 +184,6 @@
             this.label4.Size = new System.Drawing.Size(158, 13);
             this.label4.TabIndex = 21;
             this.label4.Text = "Choose what information to edit:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -205,7 +193,6 @@
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 22;
             this.label5.Text = "Crime ID";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // crimeGridView
             // 
@@ -214,7 +201,6 @@
             this.crimeGridView.Name = "crimeGridView";
             this.crimeGridView.Size = new System.Drawing.Size(684, 232);
             this.crimeGridView.TabIndex = 23;
-            this.crimeGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.crimeGridViewCellContentClick);
             // 
             // label6
             // 
@@ -224,7 +210,6 @@
             this.label6.Size = new System.Drawing.Size(150, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "Enter Crime ID to delete crime:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -234,7 +219,6 @@
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 25;
             this.label7.Text = "Crime Name";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // editSeverityTextBox
             // 
@@ -242,7 +226,6 @@
             this.editSeverityTextBox.Name = "editSeverityTextBox";
             this.editSeverityTextBox.Size = new System.Drawing.Size(100, 20);
             this.editSeverityTextBox.TabIndex = 28;
-            this.editSeverityTextBox.TextChanged += new System.EventHandler(this.editSeverityTextBox_TextChanged);
             // 
             // label10
             // 
@@ -252,7 +235,6 @@
             this.label10.Size = new System.Drawing.Size(98, 13);
             this.label10.TabIndex = 29;
             this.label10.Text = "Severity (1-5 rating)";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -262,7 +244,6 @@
             this.label11.Size = new System.Drawing.Size(97, 13);
             this.label11.TabIndex = 30;
             this.label11.Text = "(5 being the worse)";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -272,7 +253,6 @@
             this.label12.Size = new System.Drawing.Size(97, 13);
             this.label12.TabIndex = 31;
             this.label12.Text = "(5 being the worse)";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // deleteCrimeTextBox
             // 
@@ -280,7 +260,6 @@
             this.deleteCrimeTextBox.Name = "deleteCrimeTextBox";
             this.deleteCrimeTextBox.Size = new System.Drawing.Size(100, 20);
             this.deleteCrimeTextBox.TabIndex = 32;
-            this.deleteCrimeTextBox.TextChanged += new System.EventHandler(this.deleteCrimeTextBox_TextChanged);
             // 
             // label13
             // 
@@ -290,7 +269,6 @@
             this.label13.Size = new System.Drawing.Size(47, 13);
             this.label13.TabIndex = 33;
             this.label13.Text = "Crime ID";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // tryAgainLabel
             // 
@@ -300,7 +278,6 @@
             this.tryAgainLabel.Size = new System.Drawing.Size(35, 13);
             this.tryAgainLabel.TabIndex = 34;
             this.tryAgainLabel.Text = "label8";
-            this.tryAgainLabel.Click += new System.EventHandler(this.tryAgainLabel_Click);
             // 
             // Crime
             // 
@@ -335,7 +312,7 @@
             this.Controls.Add(this.crimeAddButton);
             this.Name = "Crime";
             this.Text = "Crime";
-            this.Load += new System.EventHandler(this.Crime_Load);
+            //this.Load += new System.EventHandler(this.Crime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crimeGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

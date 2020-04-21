@@ -40,7 +40,7 @@ namespace _421_Jail
             cid.Show();
         }
 
-        private void CButton_Click(object sender, EventArgs e)
+        private void CButton_Click_1(object sender, EventArgs e)
         {
             Crime crime = new Crime();
             crime.Show();
