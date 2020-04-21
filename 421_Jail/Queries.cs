@@ -538,7 +538,7 @@ namespace _421_Jail
         }
 
         //Edit Crime info
-        public static void CrimeEdit(int CrimeID, string CrimeName, int Severity)
+        public static void CrimeEdit(int CrimeID, string CrimeName, string Severity)
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -547,7 +547,7 @@ namespace _421_Jail
                 {
                     SqlCommand sqlCmd = new SqlCommand(@"UPDATE CRIME 
                                                          SET Name = @Name, 
-                                                         Severity = @Severity,
+                                                         Severity = @Severity
                                                          WHERE CrimeID = @CrimeID", sqlCon);
 
                     sqlCmd.Parameters.AddWithValue("@CrimeID", CrimeID);

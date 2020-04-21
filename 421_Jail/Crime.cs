@@ -68,11 +68,11 @@ namespace _421_Jail
             }
         }
 
-        private void crimeEditButton_Click(object sender, EventArgs e)
+        private void crimeEditButton_Click_1(object sender, EventArgs e)
         {
-           int crimeIDVal = int.Parse(findCrimeIDTextbox.Text);
+            int crimeIDVal = int.Parse(findCrimeIDTextbox.Text);
             bool check = CheckEntries(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
-            if(check == true)
+            if (check == true)
             {
                 tryAgainLabel.Text = "";
                 Queries.CrimeEdit(crimeIDVal, editCrimeNameTextBox.Text, editSeverityTextBox.Text);
@@ -82,12 +82,6 @@ namespace _421_Jail
             {
                 tryAgainLabel.Text = "Try Again :((";
             }
-       
-        }
-
-        private void editSeverityTextbox(object sender, EventArgs e)
-        {
-
         }
     }
 }

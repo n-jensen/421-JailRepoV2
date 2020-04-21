@@ -107,6 +107,7 @@
             this.crimeEditButton.TabIndex = 9;
             this.crimeEditButton.Text = "Edit";
             this.crimeEditButton.UseVisualStyleBackColor = true;
+            this.crimeEditButton.Click += new System.EventHandler(this.crimeEditButton_Click_1);
             // 
             // crimeDeleteButton
             // 
@@ -312,7 +313,6 @@
             this.Controls.Add(this.crimeAddButton);
             this.Name = "Crime";
             this.Text = "Crime";
-            //this.Load += new System.EventHandler(this.Crime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crimeGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
