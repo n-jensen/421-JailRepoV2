@@ -18,6 +18,7 @@ namespace _421_Jail
             {
                 FindInmateCombo.Items.Add(x);
                 AddCrimeToInmateComboBox.Items.Add(x);
+                DeleteCrimeOfInmateIDComboBox.Items.Add(x);
             }
 
             var crimes = CrimeIDQueries.getAllIdsOfCrimes();
@@ -60,7 +61,7 @@ namespace _421_Jail
         {
             int id;
             int inmateID;
-            if (Int32.TryParse(deleteTxt.Text, out id) && Int32.TryParse(deleteInmateIdTxt.Text, out inmateID))
+            if (Int32.TryParse(deleteTxt.Text, out id) && Int32.TryParse(DeleteCrimeOfInmateIDComboBox.SelectedItem.ToString(), out inmateID))
             {
                 CrimeIDQueries.DeleteCrimeID(id, inmateID);
                 this.ResetGrid(inmateID);

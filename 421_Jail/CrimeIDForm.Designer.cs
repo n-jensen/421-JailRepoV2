@@ -34,7 +34,6 @@
             this.deleteBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.deleteTxt = new System.Windows.Forms.TextBox();
-            this.deleteInmateIdTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.crimeDropDown = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.addCrime = new System.Windows.Forms.Button();
             this.FindInmateCombo = new System.Windows.Forms.ComboBox();
             this.AddCrimeToInmateComboBox = new System.Windows.Forms.ComboBox();
+            this.DeleteCrimeOfInmateIDComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.crimeIDGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,13 +98,6 @@
             this.deleteTxt.Name = "deleteTxt";
             this.deleteTxt.Size = new System.Drawing.Size(100, 20);
             this.deleteTxt.TabIndex = 7;
-            // 
-            // deleteInmateIdTxt
-            // 
-            this.deleteInmateIdTxt.Location = new System.Drawing.Point(306, 83);
-            this.deleteInmateIdTxt.Name = "deleteInmateIdTxt";
-            this.deleteInmateIdTxt.Size = new System.Drawing.Size(100, 20);
-            this.deleteInmateIdTxt.TabIndex = 10;
             // 
             // label2
             // 
@@ -168,11 +161,20 @@
             this.AddCrimeToInmateComboBox.Size = new System.Drawing.Size(100, 21);
             this.AddCrimeToInmateComboBox.TabIndex = 18;
             // 
+            // DeleteCrimeOfInmateIDComboBox
+            // 
+            this.DeleteCrimeOfInmateIDComboBox.FormattingEnabled = true;
+            this.DeleteCrimeOfInmateIDComboBox.Location = new System.Drawing.Point(306, 83);
+            this.DeleteCrimeOfInmateIDComboBox.Name = "DeleteCrimeOfInmateIDComboBox";
+            this.DeleteCrimeOfInmateIDComboBox.Size = new System.Drawing.Size(100, 21);
+            this.DeleteCrimeOfInmateIDComboBox.TabIndex = 19;
+            // 
             // CrimeIDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 513);
+            this.Controls.Add(this.DeleteCrimeOfInmateIDComboBox);
             this.Controls.Add(this.AddCrimeToInmateComboBox);
             this.Controls.Add(this.FindInmateCombo);
             this.Controls.Add(this.addCrime);
@@ -180,7 +182,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.crimeDropDown);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.deleteInmateIdTxt);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.deleteTxt);
@@ -203,7 +204,6 @@
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox deleteTxt;
-        private System.Windows.Forms.TextBox deleteInmateIdTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox crimeDropDown;
         private System.Windows.Forms.Label label4;
@@ -211,5 +211,6 @@
         private System.Windows.Forms.Button addCrime;
         private System.Windows.Forms.ComboBox FindInmateCombo;
         private System.Windows.Forms.ComboBox AddCrimeToInmateComboBox;
+        private System.Windows.Forms.ComboBox DeleteCrimeOfInmateIDComboBox;
     }
 }
