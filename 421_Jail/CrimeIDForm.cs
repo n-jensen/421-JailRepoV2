@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace _421_Jail
@@ -13,6 +12,14 @@ namespace _421_Jail
             this.crimeIDGrid.Columns.Add("Crime ID", "Crime ID");
             this.crimeIDGrid.Columns.Add("Inmate ID", "Inmate ID");
             this.crimeIDGrid.Columns.Add("Crime Name", "Crime Name");
+
+            var IDs = CrimeIDQueries.PopulateDropDowns();
+            foreach(string x in IDs)
+            {
+                FindInmateCombo.Items.Add(x);
+                AddCrimeToInmateComboBox.Items.Add(x);
+            }
+
             var crimes = CrimeIDQueries.getAllIdsOfCrimes();
             foreach(int x in crimes)
             {
@@ -38,7 +45,7 @@ namespace _421_Jail
         private void findIDBtn_Click(object sender, EventArgs e)
         {
             int inmateId;
-            if(Int32.TryParse(inmateIDTxt.Text, out inmateId))
+            if(Int32.TryParse(FindInmateCombo?.SelectedItem?.ToString(), out inmateId))
             {
                 this.ResetGrid(inmateId);
             }
@@ -64,7 +71,7 @@ namespace _421_Jail
         {
             int crimeId;
             int inmateId;
-            if(Int32.TryParse(crimeDropDown.SelectedItem.ToString(), out crimeId) && Int32.TryParse(addCrimeInmateIdTxt.Text, out inmateId))
+            if(Int32.TryParse(crimeDropDown?.SelectedItem?.ToString(), out crimeId) && Int32.TryParse(AddCrimeToInmateComboBox?.SelectedItem?.ToString(), out inmateId))
             {
                 CrimeIDQueries.AddCrimeID(crimeId, inmateId);
                 this.ResetGrid(inmateId);

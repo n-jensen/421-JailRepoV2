@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.crimeIDGrid = new System.Windows.Forms.DataGridView();
-            this.inmateIDTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.findIDBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
@@ -39,9 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.crimeDropDown = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.addCrimeInmateIdTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.addCrime = new System.Windows.Forms.Button();
+            this.FindInmateCombo = new System.Windows.Forms.ComboBox();
+            this.AddCrimeToInmateComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.crimeIDGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,13 +52,6 @@
             this.crimeIDGrid.Name = "crimeIDGrid";
             this.crimeIDGrid.Size = new System.Drawing.Size(585, 248);
             this.crimeIDGrid.TabIndex = 0;
-            // 
-            // inmateIDTxt
-            // 
-            this.inmateIDTxt.Location = new System.Drawing.Point(23, 57);
-            this.inmateIDTxt.Name = "inmateIDTxt";
-            this.inmateIDTxt.Size = new System.Drawing.Size(100, 20);
-            this.inmateIDTxt.TabIndex = 1;
             // 
             // label1
             // 
@@ -140,13 +133,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "ID of crime to add";
             // 
-            // addCrimeInmateIdTxt
-            // 
-            this.addCrimeInmateIdTxt.Location = new System.Drawing.Point(603, 83);
-            this.addCrimeInmateIdTxt.Name = "addCrimeInmateIdTxt";
-            this.addCrimeInmateIdTxt.Size = new System.Drawing.Size(100, 20);
-            this.addCrimeInmateIdTxt.TabIndex = 14;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -166,14 +152,31 @@
             this.addCrime.UseVisualStyleBackColor = true;
             this.addCrime.Click += new System.EventHandler(this.addCrime_Click);
             // 
+            // FindInmateCombo
+            // 
+            this.FindInmateCombo.FormattingEnabled = true;
+            this.FindInmateCombo.Location = new System.Drawing.Point(23, 57);
+            this.FindInmateCombo.Name = "FindInmateCombo";
+            this.FindInmateCombo.Size = new System.Drawing.Size(100, 21);
+            this.FindInmateCombo.TabIndex = 17;
+            // 
+            // AddCrimeToInmateComboBox
+            // 
+            this.AddCrimeToInmateComboBox.FormattingEnabled = true;
+            this.AddCrimeToInmateComboBox.Location = new System.Drawing.Point(603, 83);
+            this.AddCrimeToInmateComboBox.Name = "AddCrimeToInmateComboBox";
+            this.AddCrimeToInmateComboBox.Size = new System.Drawing.Size(100, 21);
+            this.AddCrimeToInmateComboBox.TabIndex = 18;
+            // 
             // CrimeIDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 513);
+            this.Controls.Add(this.AddCrimeToInmateComboBox);
+            this.Controls.Add(this.FindInmateCombo);
             this.Controls.Add(this.addCrime);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.addCrimeInmateIdTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.crimeDropDown);
             this.Controls.Add(this.label2);
@@ -183,7 +186,6 @@
             this.Controls.Add(this.deleteTxt);
             this.Controls.Add(this.findIDBtn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.inmateIDTxt);
             this.Controls.Add(this.crimeIDGrid);
             this.Name = "CrimeIDForm";
             this.Text = "CrimeIDForm";
@@ -196,7 +198,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView crimeIDGrid;
-        private System.Windows.Forms.TextBox inmateIDTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button findIDBtn;
         private System.Windows.Forms.Button deleteBtn;
@@ -206,8 +207,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox crimeDropDown;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox addCrimeInmateIdTxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button addCrime;
+        private System.Windows.Forms.ComboBox FindInmateCombo;
+        private System.Windows.Forms.ComboBox AddCrimeToInmateComboBox;
     }
 }

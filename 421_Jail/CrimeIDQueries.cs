@@ -13,11 +13,11 @@ namespace _421_Jail
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
-                if(sqlCon.State == System.Data.ConnectionState.Open)
+                if (sqlCon.State == System.Data.ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand(@"SELECT CrimeID from CRIME", sqlCon);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         crimeIds.Add(reader.GetInt32(reader.GetOrdinal("CrimeID")));
                     }
@@ -37,7 +37,7 @@ namespace _421_Jail
                     SqlCommand cmd = new SqlCommand(@"SELECT CRIMEID.CrimeID, CrimeID.ID, CRIMEID.InmateID, CRIME.Name FROM CRIMEID INNER JOIN CRIME ON CRIME.CrimeID = CRIMEID.CrimeID WHERE InmateID = @inmateid", sqlCon);
                     cmd.Parameters.AddWithValue("@inmateid", inmateid);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         crimeIdList.Add(new CrimeIDModel
                         {
@@ -54,10 +54,6 @@ namespace _421_Jail
 
         public static void AddCrimeID(int crimeid, int inmateid)
         {
-            if(GetOneCrimeID(crimeid) != null)
-            {
-                return;
-            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -86,26 +82,6 @@ namespace _421_Jail
             }
         }
 
-        public static void EditCrimeID(int id, int crimeid, int inmateid)
-        {
-            if(GetOneCrimeID(id) == null)
-            {
-                return;
-            }
-            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
-            {
-                sqlCon.Open();
-                if (sqlCon.State == System.Data.ConnectionState.Open) //and others
-                {
-                    SqlCommand cmd = new SqlCommand(@"UPDATE CRIMEID SET CrimeId = @crimeid, InmateID = @inmateid WHERE ID = @id", sqlCon);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Parameters.AddWithValue("@crimeid", crimeid);
-                    cmd.Parameters.AddWithValue("@inmateid", inmateid);
-                    cmd.ExecuteNonQuery();
-                } 
-            }
-        }
-
         public static List<CrimeIDModel> GetAllCrimeIDs()
         {
             List<CrimeIDModel> crimeIdList = new List<CrimeIDModel>();
@@ -129,13 +105,33 @@ namespace _421_Jail
             }
             return crimeIdList;
         }
-    }
-
-    public class CrimeIDModel
-    {
-        public int ID { get; set; }
-        public int CrimeID { get; set; }
-        public int InmateID { get; set; }
-        public string CrimeName { get; set; }
+        public static List<string> PopulateDropDowns()
+        {
+            var IDs = new List<string>();
+            using (SqlConnection sqlCon = new SqlConnection(connectionStr))
+            {
+                sqlCon.Open();
+                if (sqlCon.State == System.Data.ConnectionState.Open) //and others
+                {
+                    SqlCommand cmd = new SqlCommand(@"SELECT INMATE.InmateID
+                                                    FROM INMATE", sqlCon);
+                    SqlDataReader inmateReader = cmd.ExecuteReader();
+                    while (inmateReader.Read())
+                    {
+                        IDs.Add(inmateReader.GetInt32(inmateReader.GetOrdinal("InmateID")).ToString());
+                    }
+                }
+            }
+            return IDs;
+        }
     }
 }
+
+public class CrimeIDModel
+{
+    public int ID { get; set; }
+    public int CrimeID { get; set; }
+    public int InmateID { get; set; }
+    public string CrimeName { get; set; }
+}
+
