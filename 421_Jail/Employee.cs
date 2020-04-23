@@ -23,7 +23,6 @@ namespace _421_Jail
             this.EmployeeGrid.Columns.Add("Employee Type Info", "Employee Type Info");
             this.birthdayCal.MaxSelectionCount = 1;
             this.ResetGrid();
-            typeTimer.Start();
         }
 
         private void ResetGrid()
@@ -50,33 +49,50 @@ namespace _421_Jail
 
         private bool CheckEntries(string essn, string fname, string lname, decimal payroll, string street, string city, string state, string zip, string type, string info)
         {
-            var basicCheck = Regex.IsMatch(essn, @"^[0-9]{9}$") && Regex.IsMatch(fname, @"^[a-zA-Z]{1,20}$") && Regex.IsMatch(lname, @"^[a-zA-Z]{1,20}$")
-                && Regex.IsMatch(street, @"^[a-zA-Z0-9\s]{1,50}$") && Regex.IsMatch(state, @"^[A-Z]{2}$") && Regex.IsMatch(zip, @"^[0-9]{5}$")
-                && Regex.IsMatch(city, @"^[a-zA-Z]{1,20}$") && payroll > Decimal.Parse(0.0.ToString()) && type != "" && info != "";
-
+            var basicCheck1 = Regex.IsMatch(essn, @"^[0-9]{9}$") && Regex.IsMatch(fname, @"^[a-zA-Z]{1,20}$") && Regex.IsMatch(lname, @"^[a-zA-Z]{1,20}$");
+            var basicCheck2 = Regex.IsMatch(street, @"^[a-zA-Z0-9\s]{1,50}$") && Regex.IsMatch(state, @"^[A-Z]{2}$") && Regex.IsMatch(zip, @"^[0-9]{5}$");
+            var basicCheck3 = Regex.IsMatch(city, @"^[a-zA-Z\s]{1,20}$") && payroll > Decimal.Parse(0.0.ToString()) && type != "" && info != "";
+            bool basicCheck = basicCheck1 && basicCheck2 && basicCheck3;
             bool typeCheck = false;
             if ((type == "GUARD" || type == "DESK") && Regex.IsMatch(info, @"^[0-9]+$"))
             {
                 typeCheck = true;
             }
-            if(type == "CARE" && Regex.IsMatch(info, @"^[a-zA-Z]{1,20}$"))
+            if(type == "CARE" && Regex.IsMatch(info, @"^[a-zA-Z\s]{1,20}$"))
             {
                 typeCheck = true;
-            }
+            }//skips it
 
             return basicCheck && typeCheck;
         }
 
         private void AddEButton_Click(object sender, EventArgs e)
         {
-            bool check = CheckEntries(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, payrollTxt.Value, streetTxt.Text,
-                cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoTxt.Text);
-            
+            bool check = false;
+            if (empTypeComboBox.SelectedItem?.ToString() == "GUARD")
+            {
+                check = CheckEntries(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, payrollTxt.Value, streetTxt.Text,
+                  cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoCombobox.SelectedItem?.ToString());
+            }
+            else
+            {
+                check = CheckEntries(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, payrollTxt.Value, streetTxt.Text,
+                  cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoTxt.Text);
+            }
             if (check == true)
             {
                 tryAgainLbl.Text = "";
-                Queries.EmpAddition(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, birthdayCal.SelectionRange.Start, payrollTxt.Value, streetTxt.Text,
-                  cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoTxt.Text);
+                if (empTypeComboBox.SelectedItem?.ToString() == "GUARD")
+                {
+                    Queries.EmpAddition(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, birthdayCal.SelectionRange.Start, payrollTxt.Value, streetTxt.Text,
+                    cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoCombobox.SelectedItem?.ToString());
+                }
+                //FIXME
+                else if (empTypeComboBox.SelectedItem?.ToString() == "CARE" || empTypeComboBox.SelectedItem?.ToString() == "DESK")
+                {
+                    Queries.EmpAddition(essnTxt.Text, fnameTxt.Text, lnameTxt.Text, birthdayCal.SelectionRange.Start, payrollTxt.Value, streetTxt.Text,
+                    cityTxt.Text, stateTxt.Text, zipTxt.Text, empTypeComboBox.SelectedItem?.ToString(), empTypeInfoTxt.Text);
+                }
                 this.ResetGrid();
             }
             else
@@ -123,22 +139,44 @@ namespace _421_Jail
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            bool check = CheckEntries(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text, payrollEditTxt.Value, streetEditTxt.Text,
-                cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
+            bool check = false;
+            if (empTypeEditComboBox.SelectedItem?.ToString() == "GUARD")
+            {
+                check = CheckEntries(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text, payrollEditTxt.Value, streetEditTxt.Text,
+                  cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
+            }
+            else
+            {
+                check = CheckEntries(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text, payrollEditTxt.Value, streetEditTxt.Text,
+                  cityEditTxt.Text, stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditTxt.Text);
+            }
             //bool checkGuard = Queries.CheckGuardsBlock(Convert.ToInt32(empInfoEditCombobox.SelectedItem?.ToString()));
-            if (check == true )//&& checkGuard == true)
+            if (check == true )
             {
                 tryAgainLbl.Text = "";
-                Queries.EmpEdit(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text,
-                  birthdayEditTxt.SelectionRange.Start, payrollEditTxt.Value, streetEditTxt.Text, cityEditTxt.Text,
-                  stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
+                if (empTypeEditComboBox.SelectedItem?.ToString() == "GUARD")
+                {
+                    Queries.EmpEdit(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text,
+                    birthdayEditTxt.SelectionRange.Start, payrollEditTxt.Value, streetEditTxt.Text, cityEditTxt.Text,
+                    stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditCombobox.SelectedItem?.ToString());
+                }
+                else if (empTypeEditComboBox.SelectedItem?.ToString() == "CARE" || empTypeEditComboBox.SelectedItem.ToString() == "DESK")
+                {
+                    Queries.EmpEdit(searchESSNTxt.Text, fnameEditTxt.Text, lnameEditTxt.Text,
+                    birthdayEditTxt.SelectionRange.Start, payrollEditTxt.Value, streetEditTxt.Text, cityEditTxt.Text,
+                    stateEditTxt.Text, zipEditTxt.Text, empTypeEditComboBox.SelectedItem?.ToString(), empInfoEditTxt.Text);
+                }
                 this.ResetGrid();
             }
             else
                 tryAgainLbl.Text = "Please make sure all fields are valid";
         }
 
-        private void typeTimer_Tick(object sender, EventArgs e)
+        private void empTypeBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void empTypeEditComboBox_SelectedIndexChanged(object sender, EventArgs e) 
         {
             string type = empTypeComboBox.SelectedItem?.ToString();
             string editType = empTypeEditComboBox.SelectedItem?.ToString();
@@ -146,52 +184,80 @@ namespace _421_Jail
             //checks first column
             if (type == "GUARD")
             {
-                empTypeInfoLbl.Text = "Block ID";
+                empTypeInfoLbl2.Text = "Block ID";
             }
             else if (type == "DESK")
             {
-                empTypeInfoLbl.Text = "Desk #";
+                empTypeInfoLbl2.Text = "Desk #";
             }
             else if (type == "CARE")
             {
-                empTypeInfoLbl.Text = "Care Type";
+                empTypeInfoLbl2.Text = "Care Type";
             }
 
             //checks 2nd column
             if (editType == "GUARD")
             {
+                empInfoEditCombobox.Visible = true;
+                editEmpTypeInfoLbl.Visible = true;
                 editEmpTypeInfoLbl.Text = "Block ID";
+                empInfoEditTxt.Visible = false;
+                editEmpTypeInfoLbl2.Visible = false;
                 empInfoEditCombobox.Items.Clear();
                 List<int> blockslist = Queries.GrabAssignedBlocks();
                 foreach (var x in blockslist)
                     empInfoEditCombobox.Items.Add(x);
-                typeTimer.Stop();
             }
             else if (editType == "DESK")
             {
-                editEmpTypeInfoLbl.Text = "Desk #";
-                empInfoEditCombobox.Items.Clear();
-                List<int> deskslist = Queries.GrabDeskNumbers();
-                foreach (var x in deskslist)
-                    empInfoEditCombobox.Items.Add(x);
-                typeTimer.Stop();
+                empInfoEditTxt.Visible = true;
+                editEmpTypeInfoLbl2.Visible = true;
+                editEmpTypeInfoLbl2.Text = "Desk #";
+                empInfoEditCombobox.Visible = false;
+                editEmpTypeInfoLbl.Visible = false;
 
             }
             else if (editType == "CARE")
             {
-                editEmpTypeInfoLbl.Text = "Care Type";
-                empInfoEditCombobox.Items.Clear();
-                List<string> carelist = Queries.GrabCareTypes();
-                foreach (var x in carelist)
-                    empInfoEditCombobox.Items.Add(x);
-                typeTimer.Stop();
+                empInfoEditTxt.Visible = true;
+                editEmpTypeInfoLbl2.Visible = true;
+                editEmpTypeInfoLbl2.Text = "Care Type";
+                empInfoEditCombobox.Visible = false;
+                editEmpTypeInfoLbl.Visible = false;
             }
-            
         }
 
-        private void empTypeBtn_Click(object sender, EventArgs e)
+        private void empTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            typeTimer.Start();
+            string empType = empTypeComboBox.SelectedItem?.ToString();
+            if(empType == "GUARD")
+            {
+                //ok im gna do this now
+                empTypeInfoCombobox.Visible = true;
+                empTypeInfoLbl.Visible = true;
+                empTypeInfoTxt.Visible = false;
+                empTypeInfoLbl2.Visible = false;
+                empTypeInfoLbl.Text = "Block ID";
+                List<int> blockslist = Queries.GrabAssignedBlocks();
+                foreach (var x in blockslist)
+                    empTypeInfoCombobox.Items.Add(x);
+            }
+            else if (empType == "CARE")
+            {
+                empTypeInfoCombobox.Visible = false;
+                empTypeInfoLbl.Visible = false;
+                empTypeInfoTxt.Visible = true;
+                empTypeInfoLbl2.Visible = true;
+                empTypeInfoLbl2.Text = "Care Type";
+            }
+            else if (empType == "DESK")
+            {
+                empTypeInfoCombobox.Visible = false;
+                empTypeInfoLbl.Visible = false;
+                empTypeInfoTxt.Visible = true;
+                empTypeInfoLbl2.Visible = true;
+                empTypeInfoLbl2.Text = "Desk #";
+            }
         }
     }
 }

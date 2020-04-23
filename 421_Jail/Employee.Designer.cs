@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.essnTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.addEButton = new System.Windows.Forms.Button();
@@ -77,16 +76,18 @@
             this.cityEditTxt = new System.Windows.Forms.TextBox();
             this.streetEditTxt = new System.Windows.Forms.TextBox();
             this.empTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.empTypeInfoLbl = new System.Windows.Forms.Label();
+            this.empTypeInfoLbl2 = new System.Windows.Forms.Label();
             this.empTypeInfoTxt = new System.Windows.Forms.TextBox();
             this.empTypeLbl = new System.Windows.Forms.Label();
             this.editEmpTypeInfoLbl = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.empTypeEditComboBox = new System.Windows.Forms.ComboBox();
             this.tryAgainLbl = new System.Windows.Forms.Label();
-            this.typeTimer = new System.Windows.Forms.Timer(this.components);
             this.empInfoEditCombobox = new System.Windows.Forms.ComboBox();
-            this.empTypeBtn = new System.Windows.Forms.Button();
+            this.empInfoEditTxt = new System.Windows.Forms.TextBox();
+            this.editEmpTypeInfoLbl2 = new System.Windows.Forms.Label();
+            this.empTypeInfoLbl = new System.Windows.Forms.Label();
+            this.empTypeInfoCombobox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payrollEditTxt)).BeginInit();
@@ -110,7 +111,7 @@
             // 
             // addEButton
             // 
-            this.addEButton.Location = new System.Drawing.Point(31, 514);
+            this.addEButton.Location = new System.Drawing.Point(31, 537);
             this.addEButton.Name = "addEButton";
             this.addEButton.Size = new System.Drawing.Size(100, 23);
             this.addEButton.TabIndex = 12;
@@ -174,7 +175,7 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(321, 588);
+            this.editButton.Location = new System.Drawing.Point(321, 587);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(100, 23);
             this.editButton.TabIndex = 30;
@@ -509,19 +510,20 @@
             this.empTypeComboBox.Name = "empTypeComboBox";
             this.empTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.empTypeComboBox.TabIndex = 85;
+            this.empTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.empTypeComboBox_SelectedIndexChanged);
             // 
-            // empTypeInfoLbl
+            // empTypeInfoLbl2
             // 
-            this.empTypeInfoLbl.AutoSize = true;
-            this.empTypeInfoLbl.Location = new System.Drawing.Point(137, 491);
-            this.empTypeInfoLbl.Name = "empTypeInfoLbl";
-            this.empTypeInfoLbl.Size = new System.Drawing.Size(74, 13);
-            this.empTypeInfoLbl.TabIndex = 87;
-            this.empTypeInfoLbl.Text = "Employee Info";
+            this.empTypeInfoLbl2.AutoSize = true;
+            this.empTypeInfoLbl2.Location = new System.Drawing.Point(137, 514);
+            this.empTypeInfoLbl2.Name = "empTypeInfoLbl2";
+            this.empTypeInfoLbl2.Size = new System.Drawing.Size(74, 13);
+            this.empTypeInfoLbl2.TabIndex = 87;
+            this.empTypeInfoLbl2.Text = "Employee Info";
             // 
             // empTypeInfoTxt
             // 
-            this.empTypeInfoTxt.Location = new System.Drawing.Point(31, 488);
+            this.empTypeInfoTxt.Location = new System.Drawing.Point(31, 511);
             this.empTypeInfoTxt.Name = "empTypeInfoTxt";
             this.empTypeInfoTxt.Size = new System.Drawing.Size(100, 20);
             this.empTypeInfoTxt.TabIndex = 86;
@@ -538,7 +540,7 @@
             // editEmpTypeInfoLbl
             // 
             this.editEmpTypeInfoLbl.AutoSize = true;
-            this.editEmpTypeInfoLbl.Location = new System.Drawing.Point(444, 564);
+            this.editEmpTypeInfoLbl.Location = new System.Drawing.Point(444, 537);
             this.editEmpTypeInfoLbl.Name = "editEmpTypeInfoLbl";
             this.editEmpTypeInfoLbl.Size = new System.Drawing.Size(74, 13);
             this.editEmpTypeInfoLbl.TabIndex = 92;
@@ -566,6 +568,7 @@
             this.empTypeEditComboBox.Name = "empTypeEditComboBox";
             this.empTypeEditComboBox.Size = new System.Drawing.Size(121, 21);
             this.empTypeEditComboBox.TabIndex = 93;
+            this.empTypeEditComboBox.SelectedIndexChanged += new System.EventHandler(this.empTypeEditComboBox_SelectedIndexChanged);
             // 
             // tryAgainLbl
             // 
@@ -576,11 +579,6 @@
             this.tryAgainLbl.Size = new System.Drawing.Size(0, 24);
             this.tryAgainLbl.TabIndex = 94;
             // 
-            // typeTimer
-            // 
-            this.typeTimer.Interval = 10;
-            this.typeTimer.Tick += new System.EventHandler(this.typeTimer_Tick);
-            // 
             // empInfoEditCombobox
             // 
             this.empInfoEditCombobox.FormattingEnabled = true;
@@ -589,21 +587,43 @@
             "GUARD",
             "DESK",
             "CARE"});
-            this.empInfoEditCombobox.Location = new System.Drawing.Point(321, 561);
+            this.empInfoEditCombobox.Location = new System.Drawing.Point(321, 534);
             this.empInfoEditCombobox.Name = "empInfoEditCombobox";
             this.empInfoEditCombobox.Size = new System.Drawing.Size(121, 21);
             this.empInfoEditCombobox.TabIndex = 95;
             // 
-            // empTypeBtn
+            // empInfoEditTxt
             // 
-            this.empTypeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.empTypeBtn.Location = new System.Drawing.Point(321, 534);
-            this.empTypeBtn.Name = "empTypeBtn";
-            this.empTypeBtn.Size = new System.Drawing.Size(175, 21);
-            this.empTypeBtn.TabIndex = 96;
-            this.empTypeBtn.Text = "Press to Choose Employee Type";
-            this.empTypeBtn.UseVisualStyleBackColor = true;
-            this.empTypeBtn.Click += new System.EventHandler(this.empTypeBtn_Click);
+            this.empInfoEditTxt.Location = new System.Drawing.Point(321, 561);
+            this.empInfoEditTxt.Name = "empInfoEditTxt";
+            this.empInfoEditTxt.Size = new System.Drawing.Size(100, 20);
+            this.empInfoEditTxt.TabIndex = 97;
+            // 
+            // editEmpTypeInfoLbl2
+            // 
+            this.editEmpTypeInfoLbl2.AutoSize = true;
+            this.editEmpTypeInfoLbl2.Location = new System.Drawing.Point(427, 564);
+            this.editEmpTypeInfoLbl2.Name = "editEmpTypeInfoLbl2";
+            this.editEmpTypeInfoLbl2.Size = new System.Drawing.Size(74, 13);
+            this.editEmpTypeInfoLbl2.TabIndex = 98;
+            this.editEmpTypeInfoLbl2.Text = "Employee Info";
+            // 
+            // empTypeInfoLbl
+            // 
+            this.empTypeInfoLbl.AutoSize = true;
+            this.empTypeInfoLbl.Location = new System.Drawing.Point(154, 487);
+            this.empTypeInfoLbl.Name = "empTypeInfoLbl";
+            this.empTypeInfoLbl.Size = new System.Drawing.Size(74, 13);
+            this.empTypeInfoLbl.TabIndex = 99;
+            this.empTypeInfoLbl.Text = "Employee Info";
+            // 
+            // empTypeInfoCombobox
+            // 
+            this.empTypeInfoCombobox.FormattingEnabled = true;
+            this.empTypeInfoCombobox.Location = new System.Drawing.Point(31, 485);
+            this.empTypeInfoCombobox.Name = "empTypeInfoCombobox";
+            this.empTypeInfoCombobox.Size = new System.Drawing.Size(121, 21);
+            this.empTypeInfoCombobox.TabIndex = 100;
             // 
             // Employee
             // 
@@ -611,14 +631,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1204, 701);
-            this.Controls.Add(this.empTypeBtn);
+            this.Controls.Add(this.empTypeInfoCombobox);
+            this.Controls.Add(this.empTypeInfoLbl);
+            this.Controls.Add(this.editEmpTypeInfoLbl2);
+            this.Controls.Add(this.empInfoEditTxt);
             this.Controls.Add(this.empInfoEditCombobox);
             this.Controls.Add(this.tryAgainLbl);
             this.Controls.Add(this.empTypeEditComboBox);
             this.Controls.Add(this.editEmpTypeInfoLbl);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.empTypeLbl);
-            this.Controls.Add(this.empTypeInfoLbl);
+            this.Controls.Add(this.empTypeInfoLbl2);
             this.Controls.Add(this.empTypeInfoTxt);
             this.Controls.Add(this.empTypeComboBox);
             this.Controls.Add(this.label14);
@@ -728,15 +751,17 @@
         private System.Windows.Forms.TextBox cityEditTxt;
         private System.Windows.Forms.TextBox streetEditTxt;
         private System.Windows.Forms.ComboBox empTypeComboBox;
-        private System.Windows.Forms.Label empTypeInfoLbl;
+        private System.Windows.Forms.Label empTypeInfoLbl2;
         private System.Windows.Forms.TextBox empTypeInfoTxt;
         private System.Windows.Forms.Label empTypeLbl;
         private System.Windows.Forms.Label editEmpTypeInfoLbl;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox empTypeEditComboBox;
         private System.Windows.Forms.Label tryAgainLbl;
-        private System.Windows.Forms.Timer typeTimer;
         private System.Windows.Forms.ComboBox empInfoEditCombobox;
-        private System.Windows.Forms.Button empTypeBtn;
+        private System.Windows.Forms.TextBox empInfoEditTxt;
+        private System.Windows.Forms.Label editEmpTypeInfoLbl2;
+        private System.Windows.Forms.Label empTypeInfoLbl;
+        private System.Windows.Forms.ComboBox empTypeInfoCombobox;
     }
 }
