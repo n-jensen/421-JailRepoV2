@@ -169,6 +169,10 @@ namespace _421_Jail
         }
         public static void EmpAddition(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
+            if(EmpDisplayOne(ESSN) != null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -213,6 +217,11 @@ namespace _421_Jail
         public static void EmpEdit(string ESSN, string Fname, string Lname, DateTime Birthday, decimal Payroll, string Street, string City, string State, string Zip, string empType, string typeInfo)
         {
             var employee = EmpDisplayOne(ESSN);
+
+            if(employee == null)
+            {
+                return;
+            }
 
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
@@ -416,6 +425,10 @@ namespace _421_Jail
         //Add Block info
         public static void BlockAddition(int BlockID, string BName, string Location)
         {
+            if(DisplayBlockInfo(BlockID) != null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -433,6 +446,10 @@ namespace _421_Jail
         //Edit Block info
         public static void BlockEdit(int BlockID, string BName, string Location)
         {
+            if(DisplayBlockInfo(BlockID) == null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -523,6 +540,10 @@ namespace _421_Jail
         //Add Crime info
         public static void CrimeAddition(int CrimeID, string CrimeName, string Severity)
         {
+            if(DisplayCrimeInfo(CrimeID) != null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -540,6 +561,10 @@ namespace _421_Jail
         //Edit Crime info
         public static void CrimeEdit(int CrimeID, string CrimeName, string Severity)
         {
+            if(DisplayCrimeInfo(CrimeID) == null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();

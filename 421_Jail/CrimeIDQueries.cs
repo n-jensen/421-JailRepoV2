@@ -54,6 +54,10 @@ namespace _421_Jail
 
         public static void AddCrimeID(int crimeid, int inmateid)
         {
+            if(GetOneCrimeID(crimeid) != null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -84,6 +88,10 @@ namespace _421_Jail
 
         public static void EditCrimeID(int id, int crimeid, int inmateid)
         {
+            if(GetOneCrimeID(id) == null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();

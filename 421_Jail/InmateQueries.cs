@@ -90,6 +90,10 @@ namespace _421_Jail
         }
         public static void InmateAddition(int inmateID, string issn, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yrsLeft, int blockID)
         {
+            if(InmateDisplayOne(inmateID) != null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
@@ -111,6 +115,10 @@ namespace _421_Jail
         }
         public static void InmateEdit(int inmateID, string fname, string lname, DateTime birthday, string healthStatus, DateTime arrivalDate, int yearsLeft, int blockID)
         {
+            if(InmateDisplayOne(inmateID) == null)
+            {
+                return;
+            }
             using (SqlConnection sqlCon = new SqlConnection(connectionStr))
             {
                 sqlCon.Open();
