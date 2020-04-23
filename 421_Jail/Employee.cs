@@ -54,14 +54,14 @@ namespace _421_Jail
             var basicCheck3 = Regex.IsMatch(city, @"^[a-zA-Z\s]{1,20}$") && payroll > Decimal.Parse(0.0.ToString()) && type != "" && info != "";
             bool basicCheck = basicCheck1 && basicCheck2 && basicCheck3;
             bool typeCheck = false;
-            if ((type == "GUARD" || type == "DESK") && Regex.IsMatch(info, @"^[0-9]+$"))
+            if ((type == "GUARD" || type == "DESK") && info != null && Regex.IsMatch(info, @"^[0-9]+$"))
             {
                 typeCheck = true;
             }
-            if(type == "CARE" && Regex.IsMatch(info, @"^[a-zA-Z\s]{1,20}$"))
+            if(type == "CARE" && info != null && Regex.IsMatch(info, @"^[a-zA-Z\s]{1,20}$"))
             {
                 typeCheck = true;
-            }//skips it
+            }
 
             return basicCheck && typeCheck;
         }
@@ -114,6 +114,7 @@ namespace _421_Jail
                 zipEditTxt.Text = emp.Zip;
                 empTypeEditComboBox.SelectedItem = emp.EmpType;
                 empInfoEditCombobox.Items.Add(emp.TypeInfo);
+                empInfoEditTxt.Text = emp.TypeInfo;
                 empInfoEditCombobox.SelectedItem = emp.TypeInfo;
             }
             else

@@ -210,7 +210,7 @@ namespace _421_Jail
                         addEmpType.Parameters.AddWithValue("@ESSN", ESSN);
                         addEmpType.Parameters.AddWithValue("@CareType", typeInfo);
                         addEmpType.ExecuteNonQuery();
-                    }
+                    } 
                 }
             }
         }
