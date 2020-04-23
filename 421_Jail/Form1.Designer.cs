@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.JButton = new System.Windows.Forms.Button();
             this.EButton = new System.Windows.Forms.Button();
             this.IButton = new System.Windows.Forms.Button();
             this.CButton = new System.Windows.Forms.Button();
@@ -37,20 +36,10 @@
             this.crimeIdBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // JButton
-            // 
-            this.JButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.JButton.Location = new System.Drawing.Point(60, 150);
-            this.JButton.Name = "JButton";
-            this.JButton.Size = new System.Drawing.Size(92, 77);
-            this.JButton.TabIndex = 0;
-            this.JButton.Text = "Jail Information ";
-            this.JButton.UseVisualStyleBackColor = false;
-            // 
             // EButton
             // 
             this.EButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.EButton.Location = new System.Drawing.Point(171, 150);
+            this.EButton.Location = new System.Drawing.Point(59, 150);
             this.EButton.Name = "EButton";
             this.EButton.Size = new System.Drawing.Size(92, 77);
             this.EButton.TabIndex = 1;
@@ -61,7 +50,7 @@
             // IButton
             // 
             this.IButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.IButton.Location = new System.Drawing.Point(287, 150);
+            this.IButton.Location = new System.Drawing.Point(192, 150);
             this.IButton.Name = "IButton";
             this.IButton.Size = new System.Drawing.Size(92, 77);
             this.IButton.TabIndex = 2;
@@ -72,7 +61,7 @@
             // CButton
             // 
             this.CButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.CButton.Location = new System.Drawing.Point(405, 150);
+            this.CButton.Location = new System.Drawing.Point(331, 150);
             this.CButton.Name = "CButton";
             this.CButton.Size = new System.Drawing.Size(92, 77);
             this.CButton.TabIndex = 3;
@@ -83,7 +72,7 @@
             // BButton
             // 
             this.BButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.BButton.Location = new System.Drawing.Point(523, 150);
+            this.BButton.Location = new System.Drawing.Point(473, 150);
             this.BButton.Name = "BButton";
             this.BButton.Size = new System.Drawing.Size(92, 77);
             this.BButton.TabIndex = 4;
@@ -105,7 +94,7 @@
             // crimeIdBtn
             // 
             this.crimeIdBtn.BackColor = System.Drawing.Color.PowderBlue;
-            this.crimeIdBtn.Location = new System.Drawing.Point(644, 150);
+            this.crimeIdBtn.Location = new System.Drawing.Point(616, 150);
             this.crimeIdBtn.Name = "crimeIdBtn";
             this.crimeIdBtn.Size = new System.Drawing.Size(92, 77);
             this.crimeIdBtn.TabIndex = 6;
@@ -125,7 +114,6 @@
             this.Controls.Add(this.CButton);
             this.Controls.Add(this.IButton);
             this.Controls.Add(this.EButton);
-            this.Controls.Add(this.JButton);
             this.Name = "MainMenu";
             this.Text = "Menu";
             this.ResumeLayout(false);
@@ -134,8 +122,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button JButton;
         private System.Windows.Forms.Button EButton;
         private System.Windows.Forms.Button IButton;
         private System.Windows.Forms.Button CButton;
